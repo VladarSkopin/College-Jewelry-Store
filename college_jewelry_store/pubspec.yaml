@@ -1,80 +1,122 @@
 name: college_jewelry_store
-description: A new Flutter project.
+description: A new
+publish_to: 'none'
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
 version: 1.0.0+1
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+    - assets/rings/golden_amethyst_ring.jpg
+    - assets/rings/golden_diamond_ring.jpg
+    - assets/rings/golden_emerald_ring.jpg
+    - assets/rings/golden_ring.jpg
+    - assets/rings/golden_ruby_ring.jpg
+    - assets/rings/golden_sapphire_ring.jpg
+    - assets/rings/platinum_amethyst_ring.png
+    - assets/rings/platinum_diamond_ring.png
+    - assets/rings/platinum_emerald_ring.jpg
+    - assets/rings/platinum_ring.jpg
+    - assets/rings/platinum_ruby_ring.jpg
+    - assets/rings/platinum_sapphire_ring.png
+    - assets/rings/silver_amethyst_ring.png
+    - assets/rings/silver_diamond_ring.png
+    - assets/rings/silver_emerald_ring.jpg
+    - assets/rings/silver_ring.png
+    - assets/rings/silver_ruby_ring.jpeg
+    - assets/rings/silver_sapphire_ring.png
+    - assets/bracelets/golden_amethyst_bracelet.jpg
+    - assets/bracelets/golden_bracelet.jpg
+    - assets/bracelets/golden_diamond_bracelet.jpg
+    - assets/bracelets/golden_emerald_bracelet.jpg
+    - assets/bracelets/golden_ruby_bracelet.jpg
+    - assets/bracelets/golden_sapphire_bracelet.jpg
+    - assets/bracelets/platinum_amethyst_bracelet.jpg
+    - assets/bracelets/platinum_bracelet.jpg
+    - assets/bracelets/platinum_diamond_bracelet.jpg
+    - assets/bracelets/platinum_emerald_bracelet.jpg
+    - assets/bracelets/platinum_ruby_bracelet.jpg
+    - assets/bracelets/platinum_sapphire_bracelet.png
+    - assets/bracelets/silver_amethyst_bracelet.jpg
+    - assets/bracelets/silver_bracelet.jpg
+    - assets/bracelets/silver_diamond_bracelet.png
+    - assets/bracelets/silver_emerald_bracelet.png
+    - assets/bracelets/silver_ruby_bracelet.jpg
+    - assets/bracelets/silver_sapphire_bracelet.jpg
+    - assets/brooches/golden_amethyst_brooch.jpg
+    - assets/brooches/golden_brooch.jpg
+    - assets/brooches/golden_diamond_brooch.jpg
+    - assets/brooches/golden_emerald_brooch.jpg
+    - assets/brooches/golden_ruby_brooch.jpeg
+    - assets/brooches/golden_sapphire_brooch.jpg
+    - assets/brooches/platinum_amethyst_brooch.jpg
+    - assets/brooches/platinum_brooch.jpg
+    - assets/brooches/platinum_diamond_brooch.jpg
+    - assets/brooches/platinum_emerald_brooch.jpg
+    - assets/brooches/platinum_ruby_brooch.jpg
+    - assets/brooches/platinum_sapphire_brooch.jpg
+    - assets/brooches/silver_amethyst_brooch.jpg
+    - assets/brooches/silver_brooch.jpg
+    - assets/brooches/silver_diamond_brooch.jpg
+    - assets/brooches/silver_emerald_brooch.jpg
+    - assets/brooches/silver_ruby_brooch.jpg
+    - assets/brooches/silver_sapphire_brooch.jpg
+    - assets/necklace/golden_amethyst_necklace.jpg
+    - assets/necklace/golden_diamond_necklace.jpeg
+    - assets/necklace/golden_emerald_necklace.jpg
+    - assets/necklace/golden_necklace.png
+    - assets/necklace/golden_ruby_necklace.png
+    - assets/necklace/golden_sapphire_necklace.jpeg
+    - assets/necklace/platinum_amethyst_necklace.jpg
+    - assets/necklace/platinum_diamond_necklace.jpg
+    - assets/necklace/platinum_emerald_necklace.jpg
+    - assets/necklace/platinum_necklace.png
+    - assets/necklace/platinum_ruby_necklace.jpg
+    - assets/necklace/platinum_sapphire_necklace.jpg
+    - assets/necklace/silver_amethyst_necklace.jpg
+    - assets/necklace/silver_diamond_necklace.jpg
+    - assets/necklace/silver_emerald_necklace.jpeg
+    - assets/necklace/silver_necklace.png
+    - assets/necklace/silver_ruby_necklace.png
+    - assets/necklace/silver_sapphire_necklace.jpg
+    - assets/earrings/golden_amethyst_earrings.jpg
+    - assets/earrings/golden_diamond_earrings.png
+    - assets/earrings/golden_earrings.jpg
+    - assets/earrings/golden_emerald_earrings.jpg
+    - assets/earrings/golden_ruby_earrings.jpg
+    - assets/earrings/golden_sapphire_earrings.jpeg
+    - assets/earrings/platinum_amethyst_earrings.jpg
+    - assets/earrings/platinum_diamond_earrings.jpg
+    - assets/earrings/platinum_earrings.jpg
+    - assets/earrings/platinum_emerald_earrings.jpg
+    - assets/earrings/platinum_ruby_earrings.jpg
+    - assets/earrings/platinum_sapphire_earrings.jpg
+    - assets/earrings/silver_amethyst_earrings.png
+    - assets/earrings/silver_diamond_earrings.jpg
+    - assets/earrings/silver_earrings.jpg
+    - assets/earrings/silver_emerald_earrings.png
+    - assets/earrings/silver_ruby_earrings.jpg
+    - assets/earrings/silver_sapphire_earrings.png
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -86,6 +128,3 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
