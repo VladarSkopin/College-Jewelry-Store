@@ -1,6 +1,7 @@
 
-import 'package:college_jewelry_store/models/catalog_model.dart';
+import 'package:college_jewelry_store/screens/collection_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({Key? key}) : super(key: key);
@@ -32,12 +33,12 @@ class _OrderScreenState extends State<OrderScreen> {
       ),
       child: Column(
         children: [
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           const Text('Здесь вы можете собрать свой заказ:', style: TextStyle(
               fontSize: 20,
             fontWeight: FontWeight.w500
           ), textAlign: TextAlign.center),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           MaterialButton(
               onPressed: () {
 
@@ -51,7 +52,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   color: Colors.white
                 )
               ),
-          child: const Text('НАЧАТЬ!', style: TextStyle(
+          child: const Text('НАЧАТЬ', style: TextStyle(
             color: Colors.white,
             fontSize: 20
           ))),
@@ -60,10 +61,18 @@ class _OrderScreenState extends State<OrderScreen> {
             fontSize: 20,
               fontWeight: FontWeight.w500
           ), textAlign: TextAlign.center),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           MaterialButton(
               onPressed: () {
-
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.scale,
+                    alignment: Alignment.bottomCenter,
+                    duration: const Duration(milliseconds: 1200),
+                    child: const CollectionScreen()
+                  )
+                );
               },
               color: const Color(0xFF4A93FF),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
