@@ -837,10 +837,10 @@ class Jewelry {
   Jewelry({
     required this.id,
     required this.price,
-  required this.imgUrl,
-  required this.label,
-  required this.type,
-  required this.metal,
+    required this.imgUrl,
+    required this.label,
+    required this.type,
+    required this.metal,
     required this.gem
   });
 }

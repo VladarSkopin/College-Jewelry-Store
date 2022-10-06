@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-
 import '../models/catalog_model.dart';
 
 

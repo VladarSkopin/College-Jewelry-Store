@@ -1,6 +1,7 @@
 
+import 'package:college_jewelry_store/screens/item_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:page_transition/page_transition.dart';
 import '../models/catalog_model.dart';
 
 class CollectionScreen extends StatefulWidget {
@@ -11,11 +12,6 @@ class CollectionScreen extends StatefulWidget {
 }
 
 class _CollectionScreenState extends State<CollectionScreen> {
-
-
-  final _ringsList = CatalogModel.jewelryItems.where((element) => (element.type == 'ring')).toList();
-  final _braceletsList = CatalogModel.jewelryItems.where((element) => (element.type == 'bracelet')).toList();
-  final _broochesList = CatalogModel.jewelryItems.where((element) => (element.type == 'brooch')).toList();
 
   final _silverList = CatalogModel.jewelryItems.where((element) => (element.metal == 'silver')).toList();
   final _goldenList = CatalogModel.jewelryItems.where((element) => (element.metal == 'gold')).toList();
@@ -55,7 +51,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
+        appBar: AppBar(title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
         body: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -110,11 +106,35 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         itemBuilder: (context, int index) {
                           return Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image(
-                                image: AssetImage(_silverList[index].imgUrl),
-                              ),
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_silverList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _silverList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                             ),
                           );
                         }),
@@ -134,11 +154,35 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         itemBuilder: (context, int index) {
                           return Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image(
-                                image: AssetImage(_goldenList[index].imgUrl),
-                              ),
+                            child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      image: AssetImage(_goldenList[index].imgUrl),
+                                    ),
+                                  ),
+                                  Positioned.fill(
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType.scale,
+                                                  alignment: Alignment.bottomCenter,
+                                                  duration: const Duration(milliseconds: 1200),
+                                                  child: ItemPage(item: _goldenList[index],)
+                                              )
+                                          );
+                                        },
+                                        splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
+                                ]
                             ),
                           );
                         }),
@@ -158,11 +202,35 @@ class _CollectionScreenState extends State<CollectionScreen> {
                         itemBuilder: (context, int index) {
                           return Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image(
-                                image: AssetImage(_platinumList[index].imgUrl),
-                              ),
+                            child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      image: AssetImage(_platinumList[index].imgUrl),
+                                    ),
+                                  ),
+                                  Positioned.fill(
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType.scale,
+                                                  alignment: Alignment.bottomCenter,
+                                                  duration: const Duration(milliseconds: 1200),
+                                                  child: ItemPage(item: _platinumList[index],)
+                                              )
+                                          );
+                                        },
+                                        splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
+                                ]
                             ),
                           );
                         }),
