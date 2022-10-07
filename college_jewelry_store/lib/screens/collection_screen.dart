@@ -47,6 +47,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
       ]
   );
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

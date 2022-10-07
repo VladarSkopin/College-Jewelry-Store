@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../models/catalog_model.dart';
+import 'package:intl/intl.dart' as intl;
 
 
 class ItemPage extends StatefulWidget {
@@ -15,6 +16,8 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends State<ItemPage> {
 
+
+  var formatter = intl.NumberFormat('#,###');
 
   final _txtStyle = TextStyle(
       color: Colors.white,
@@ -69,7 +72,10 @@ class _ItemPageState extends State<ItemPage> {
             ),
         ),
                 Text(widget.item.label, style: _txtStyle),
-                Text('Цена: ${widget.item.price} руб.',
+                Text(
+                  //'Цена: ${widget.item.price} руб.',
+                  'Цена: ${formatter.format(widget.item.price)} руб.'.replaceAll(',', ' '),
+                  //'Цена: ${formatter.format(widget.item.price)} руб.',
                   style: _txtStyle.copyWith(
                     fontSize: 18
                   ),
@@ -83,15 +89,14 @@ class _ItemPageState extends State<ItemPage> {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: Text('Товар успешно добавлен в корзину', style: TextStyle(
+                            title: const Text('Товар успешно добавлен в корзину', style: TextStyle(
                               color: Color(0xFF256D85),
                               fontSize: 24
                             ), textAlign: TextAlign.center),
-                            //icon: Icon(Icons.check_circle_outline, size: 40, color: Color(0xFF256D85)),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)
                             ),
-                            backgroundColor: Color(0xFFDFF6FF),
+                            backgroundColor: const Color(0xFFDFF6FF),
                             actionsAlignment: MainAxisAlignment.center,
                             actions: [
                               TextButton(

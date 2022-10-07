@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import '../models/catalog_model.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'item_page.dart';
 
 
 class BrowseScreen extends StatefulWidget {
@@ -104,11 +107,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(_ringsList[index].imgUrl),
-                            ),
+                          child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_ringsList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _ringsList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                           ),
                         );
                       }),
@@ -128,11 +155,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(_braceletsList[index].imgUrl),
-                            ),
+                          child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_braceletsList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _braceletsList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                           ),
                         );
                       }),
@@ -152,11 +203,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(_broochesList[index].imgUrl),
-                            ),
+                          child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_broochesList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _broochesList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                           ),
                         );
                       }),
@@ -176,11 +251,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(_necklaceList[index].imgUrl),
-                            ),
+                          child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_necklaceList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _necklaceList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                           ),
                         );
                       }),
@@ -200,11 +299,35 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(_earringsList[index].imgUrl),
-                            ),
+                          child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(_earringsList[index].imgUrl),
+                                  ),
+                                ),
+                                Positioned.fill(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.scale,
+                                                alignment: Alignment.bottomCenter,
+                                                duration: const Duration(milliseconds: 1200),
+                                                child: ItemPage(item: _earringsList[index],)
+                                            )
+                                        );
+                                      },
+                                      splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                )
+                              ]
                           ),
                         );
                       }),
