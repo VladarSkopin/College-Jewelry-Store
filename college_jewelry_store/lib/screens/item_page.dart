@@ -36,7 +36,7 @@ class _ItemPageState extends State<ItemPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
+        appBar: AppBar(title: const Text('ВЫБОР ИЗДЕЛИЯ'), centerTitle: true),
         body: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(

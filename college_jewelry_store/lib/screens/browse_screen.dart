@@ -99,7 +99,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
                 Container(
                   decoration: _catalogDecoration,
-                  height: 200,
+                  height: 150,
                   child: ListView.builder(
                     shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -147,7 +147,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
                 Container(
                   decoration: _catalogDecoration,
-                  height: 200,
+                  height: 150,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -195,7 +195,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
                 Container(
                   decoration: _catalogDecoration,
-                  height: 200,
+                  height: 150,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -243,7 +243,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
                 Container(
                   decoration: _catalogDecoration,
-                  height: 200,
+                  height: 150,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -291,7 +291,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
                 Container(
                   decoration: _catalogDecoration,
-                  height: 200,
+                  height: 150,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,

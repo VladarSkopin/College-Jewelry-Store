@@ -1,5 +1,6 @@
 
 import 'package:college_jewelry_store/screens/collection_screen.dart';
+import 'package:college_jewelry_store/screens/custom_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -41,7 +42,15 @@ class _OrderScreenState extends State<OrderScreen> {
           const SizedBox(height: 30),
           MaterialButton(
               onPressed: () {
-
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.size,
+                        alignment: Alignment.bottomCenter,
+                        duration: const Duration(milliseconds: 1200),
+                        child: const CustomOrderScreen()
+                    )
+                );
               },
               color: const Color(0xFF4A93FF),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),

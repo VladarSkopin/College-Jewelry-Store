@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'package:provider/provider.dart';
 
+import 'models/cart_manager.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -46,7 +48,12 @@ class _MyAppState extends State<MyApp> {
           ),
         )
       ),
-      home: HomePage()
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CartManager())
+        ],
+          child: const HomePage()
+      )
     );
   }
 }

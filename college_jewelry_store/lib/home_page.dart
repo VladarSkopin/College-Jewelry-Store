@@ -3,6 +3,9 @@ import 'package:college_jewelry_store/screens/browse_screen.dart';
 import 'package:college_jewelry_store/screens/cart_screen.dart';
 import 'package:college_jewelry_store/screens/order_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'models/cart_manager.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -16,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
 
-  static List<Widget> _pages = [
+  static List<Widget> _pages = <Widget> [
     OrderScreen(),
     BrowseScreen(),
     CartScreen()
@@ -30,31 +33,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
-        body: _pages[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.diamond_outlined),
-              label: 'Заказ'
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list_alt),
-                label: 'Каталог'
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined),
-                label: 'Корзина'
-            ),
+    return Consumer<CartManager>(
+        builder: (context, cartManager, child) {
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                  title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
+              body: _pages[_selectedIndex],
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                items: const [
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.diamond_outlined),
+                      label: 'Заказ'
+                  ),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.list_alt),
+                      label: 'Каталог'
+                  ),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.shopping_cart_outlined),
+                      label: 'Корзина'
+                  ),
 
-          ],
+                ],
 
-        ),
-      ),
+              ),
+            ),
+          );
+        }
     );
   }
 }

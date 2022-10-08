@@ -28,6 +28,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/playstore.png
     - assets/rings/golden_amethyst_ring.jpg
     - assets/rings/golden_diamond_ring.jpg
     - assets/rings/golden_emerald_ring.jpg

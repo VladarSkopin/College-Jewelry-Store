@@ -99,7 +99,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                   ),
                   Container(
                     decoration: _catalogDecoration,
-                    height: 200,
+                    height: 150,
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -147,7 +147,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                   ),
                   Container(
                     decoration: _catalogDecoration,
-                    height: 200,
+                    height: 150,
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -195,7 +195,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                   ),
                   Container(
                     decoration: _catalogDecoration,
-                    height: 200,
+                    height: 150,
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
