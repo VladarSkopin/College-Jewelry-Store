@@ -25,12 +25,31 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
   String? _gem = 'Любая';
 
   final _txtStyle = const TextStyle(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w600
   );
 
+  final _txtDropdownStyle = const TextStyle(
+    color: Color(0xFFDFF6FF),
+      fontSize: 18,
+      fontWeight: FontWeight.w600
+  );
+
+  final _txtDescriptionStyle =  TextStyle(
+      color: Colors.blueAccent,
+      fontSize: 14,
+      height: 1.6,
+      shadows: [
+        Shadow(
+            color: Colors.grey[300]!,
+            blurRadius: 2.0,
+            offset: const Offset(1, 1)
+        )
+      ]
+  );
+
   var formatter = intl.NumberFormat('#,###');
-  
+
 
   @override
   void initState() {
@@ -73,250 +92,311 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
                         children: [
                           const SizedBox(width: 20),
                           Column(
+                            //crossAxisAlignment: CrossAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0, bottom: 10),
                                 child: Text('Тип:', style: _txtStyle),
                               ),
-                              DropdownButton<String>(
-                                  value: _type,
-                                  items: <String>['Любой', 'Кольца', 'Браслеты', 'Брошки', 'Ожерелья', 'Серёжки']
-                                      .map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? val) {
+                              Container(
+                                padding: const EdgeInsets.only(left: 8),
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                  color: Color(0xFF06283D),
+                                ),
+                                child: DropdownButtonHideUnderline( 
+                                  child: DropdownButton<String>(
+                                      value: _type,
+                                      icon: Container(
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                            color: Color(0xFF256D85),
+                                          ),
+                                          child: const Icon(Icons.arrow_drop_down)),
+                                      iconSize: 35,
+                                      iconEnabledColor: const Color(0xFFDFF6FF),
+                                      dropdownColor: const Color(0xFF47B5FF),
+                                      isDense: true,
+                                      style: _txtDropdownStyle,
+                                      items: <String>['Любой', 'Кольца', 'Браслеты', 'Брошки', 'Ожерелья', 'Серёжки']
+                                          .map<DropdownMenuItem<String>>((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text('$value     '),
+                                        );
+                                      }).toList(),
+                                      onChanged: (String? val) {
 
-                                    setState(() {
-                                      _type = val;
-                                    });
+                                        setState(() {
+                                          _type = val;
+                                        });
 
-                                    Provider.of<CartManager>(context, listen: false).type =
-                                    (val == 'Кольца') ? 'ring'
-                                        : (val == 'Браслеты') ? 'bracelet'
-                                        : (val == 'Брошки') ? 'brooch'
-                                        : (val == 'Ожерелья') ? 'necklace'
-                                        : (val == 'Серёжки') ? 'earring'
-                                        : 'any';
+                                        Provider.of<CartManager>(context, listen: false).type =
+                                        (val == 'Кольца') ? 'ring'
+                                            : (val == 'Браслеты') ? 'bracelet'
+                                            : (val == 'Брошки') ? 'brooch'
+                                            : (val == 'Ожерелья') ? 'necklace'
+                                            : (val == 'Серёжки') ? 'earring'
+                                            : 'any';
 
 
-                                    String chosenType = Provider.of<CartManager>(context, listen: false).type;
-                                    String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
-                                    String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
+                                        String chosenType = Provider.of<CartManager>(context, listen: false).type;
+                                        String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
+                                        String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
 
-                                    setState(() {
-                                      if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList;
-                                      } else if (chosenType == 'any' && chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenType == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.metal == chosenMetal
-                                        )).toList();
-                                      } else if (chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType
-                                        )).toList();
-                                      } else if (chosenType == 'any'){
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.metal == chosenMetal &&
+                                        setState(() {
+                                          if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList;
+                                          } else if (chosenType == 'any' && chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
-                                                element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
+                                            )).toList();
+                                          } else if (chosenType == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.metal == chosenMetal
-                                        )).toList();
-                                      } else {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
+                                            )).toList();
+                                          } else if (chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType
+                                            )).toList();
+                                          } else if (chosenType == 'any'){
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.metal == chosenMetal &&
-                                                element.gem == chosenGem
-                                        )).toList();
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal
+                                            )).toList();
+                                          } else {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          }
+
+                                        });
+
                                       }
-
-                                    });
-
-                                  }
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0, bottom: 10),
                                 child: Text('Металл:', style: _txtStyle),
                               ),
-                              DropdownButton<String>(
-                                  value: _metal,
-                                  items: <String>['Любой', 'Серебро', 'Золото', 'Платина']
-                                      .map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? val) {
+                              Container(
+                                padding: const EdgeInsets.only(left: 8),
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                  color: Color(0xFF06283D),
+                                ),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                      value: _metal,
+                                      icon: Container(
+                                            decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                            color: Color(0xFF256D85),
+                                          ),
+                                          child: const Icon(Icons.arrow_drop_down)),
+                                      iconSize: 35,
+                                      iconEnabledColor: const Color(0xFFDFF6FF),
+                                      dropdownColor: const Color(0xFF47B5FF),
+                                      isDense: true,
+                                      style: _txtDropdownStyle,
+                                      items: <String>['Любой', 'Серебро', 'Золото', 'Платина']
+                                          .map<DropdownMenuItem<String>>((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text('$value        '),
+                                        );
+                                      }).toList(),
+                                      onChanged: (String? val) {
 
-                                    setState(() {
-                                      _metal = val;
-                                    });
+                                        setState(() {
+                                          _metal = val;
+                                        });
 
-                                    Provider.of<CartManager>(context, listen: false).metal =
-                                    (val == 'Серебро') ? 'silver'
-                                        : (val == 'Золото') ? 'gold'
-                                        : (val == 'Платина') ? 'platinum'
-                                        : 'any';
+                                        Provider.of<CartManager>(context, listen: false).metal =
+                                        (val == 'Серебро') ? 'silver'
+                                            : (val == 'Золото') ? 'gold'
+                                            : (val == 'Платина') ? 'platinum'
+                                            : 'any';
 
 
-                                    String chosenType = Provider.of<CartManager>(context, listen: false).type;
-                                    String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
-                                    String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
+                                        String chosenType = Provider.of<CartManager>(context, listen: false).type;
+                                        String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
+                                        String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
 
-                                    setState(() {
-                                      if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList;
-                                      } else if (chosenType == 'any' && chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                                element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenType == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                                element.metal == chosenMetal
-                                        )).toList();
-                                      } else if (chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType
-                                        )).toList();
-                                      } else if (chosenType == 'any'){
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                                element.metal == chosenMetal &&
-                                                element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
-                                                element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
-                                                element.metal == chosenMetal
-                                        )).toList();
-                                      } else {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
-                                                element.metal == chosenMetal &&
-                                                element.gem == chosenGem
-                                        )).toList();
+                                        setState(() {
+                                          if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList;
+                                          } else if (chosenType == 'any' && chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenType == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                    element.metal == chosenMetal
+                                            )).toList();
+                                          } else if (chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType
+                                            )).toList();
+                                          } else if (chosenType == 'any'){
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                    element.metal == chosenMetal &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal
+                                            )).toList();
+                                          } else {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          }
+
+                                        });
+
+
                                       }
-
-                                    });
-
-
-                                  }
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0, bottom: 10),
                                 child: Text('Инкрустация:', style: _txtStyle),
                               ),
-                              DropdownButton<String>(
-                                  value: _gem,
-                                  items: <String>['Любая', 'Аметист', 'Бриллиант', 'Рубин', 'Изумруд', 'Сапфир', 'Нет']
-                                      .map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? val) {
+                              Container(
+                                padding: const EdgeInsets.only(left: 8),
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                  color: Color(0xFF06283D),
+                                ),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                      value: _gem,
+                                      icon: Container(
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                            color: Color(0xFF256D85),
+                                          ),
+                                          child: const Icon(Icons.arrow_drop_down)),
+                                      iconSize: 35,
+                                      iconEnabledColor: const Color(0xFFDFF6FF),
+                                      dropdownColor: const Color(0xFF47B5FF),
+                                      isDense: true,
+                                      style: _txtDropdownStyle,
+                                      items: <String>['Любая', 'Аметист', 'Бриллиант', 'Рубин', 'Изумруд', 'Сапфир', 'Нет']
+                                          .map<DropdownMenuItem<String>>((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text('$value   '),
+                                        );
+                                      }).toList(),
+                                      onChanged: (String? val) {
 
-                                    setState(() {
-                                      _gem = val;
-                                    });
+                                        setState(() {
+                                          _gem = val;
+                                        });
 
-                                    Provider.of<CartManager>(context, listen: false).gem =
-                                    (val == 'Аметист') ? 'amethyst'
-                                        : (val == 'Бриллиант') ? 'diamond'
-                                        : (val == 'Рубин') ? 'ruby'
-                                        : (val == 'Изумруд') ? 'emerald'
-                                        : (val == 'Сапфир') ? 'sapphire'
-                                        : (val == 'Нет') ? 'none'
-                                        : 'any';
+                                        Provider.of<CartManager>(context, listen: false).gem =
+                                        (val == 'Аметист') ? 'amethyst'
+                                            : (val == 'Бриллиант') ? 'diamond'
+                                            : (val == 'Рубин') ? 'ruby'
+                                            : (val == 'Изумруд') ? 'emerald'
+                                            : (val == 'Сапфир') ? 'sapphire'
+                                            : (val == 'Нет') ? 'none'
+                                            : 'any';
 
 
-                                    String chosenType = Provider.of<CartManager>(context, listen: false).type;
-                                    String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
-                                    String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
+                                        String chosenType = Provider.of<CartManager>(context, listen: false).type;
+                                        String chosenMetal = Provider.of<CartManager>(context, listen: false).metal;
+                                        String chosenGem = Provider.of<CartManager>(context, listen: false).gem;
 
-                                    setState(() {
-                                      if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList;
-                                      } else if (chosenType == 'any' && chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenType == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.metal == chosenMetal
-                                        )).toList();
-                                      } else if (chosenMetal == 'any' && chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType
-                                        )).toList();
-                                      } else if (chosenType == 'any'){
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.metal == chosenMetal &&
+                                        setState(() {
+                                          if (chosenType == 'any' && chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList;
+                                          } else if (chosenType == 'any' && chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenMetal == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
-                                                element.gem == chosenGem
-                                        )).toList();
-                                      } else if (chosenGem == 'any') {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
+                                            )).toList();
+                                          } else if (chosenType == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.metal == chosenMetal
-                                        )).toList();
-                                      } else {
-                                        _customItemList = _bufferItemList
-                                            .where((element) => (
-                                            element.type == chosenType &&
+                                            )).toList();
+                                          } else if (chosenMetal == 'any' && chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType
+                                            )).toList();
+                                          } else if (chosenType == 'any'){
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
                                                 element.metal == chosenMetal &&
-                                                element.gem == chosenGem
-                                        )).toList();
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenMetal == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          } else if (chosenGem == 'any') {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal
+                                            )).toList();
+                                          } else {
+                                            _customItemList = _bufferItemList
+                                                .where((element) => (
+                                                element.type == chosenType &&
+                                                    element.metal == chosenMetal &&
+                                                    element.gem == chosenGem
+                                            )).toList();
+                                          }
+
+                                        });
+
                                       }
-
-                                    });
-
-                                  }
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -325,21 +405,18 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 20.0),
                               child: Column(
-                                children: const [
-                                  Image(
+                                children:  [
+                                  const Image(
                                     image: AssetImage('assets/playstore.png'),
                                     width: 80,
                                     height: 80,
                                   ),
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                   Text(
-                                    'В результате указанных вами опций внизу появится отфильтрованный список ювелирных изделий',
+                                    //'В результате указанных вами параметров внизу появится список ювелирных изделий. '
+                                        'Нажмите по изделию, чтобы узнать более подробную информацию о нём',
                                     overflow: TextOverflow.fade,
-                                    style: TextStyle(
-                                        color: Colors.blueAccent,
-                                        fontSize: 16,
-                                        height: 1.6
-                                    ),
+                                    style: _txtDescriptionStyle,
                                     textAlign: TextAlign.center,
                                   ),
                                   /*
@@ -400,17 +477,8 @@ class _CustomOrderScreenState extends State<CustomOrderScreen> {
                                     const SizedBox(height: 10),
                                     Text(
                                       '${formatter.format(_customItemList[index].price)} руб.',
-                                      style: TextStyle(
-                                          color: Colors.blueAccent,
-                                          fontSize: 14,
-                                          shadows: [
-                                            Shadow(
-                                                color: Colors.grey[300]!,
-                                                blurRadius: 2.0,
-                                                offset: const Offset(1, 1)
-                                            )
-                                          ]
-                                      ),
+                                      style: _txtDescriptionStyle,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ],
                                 ),
