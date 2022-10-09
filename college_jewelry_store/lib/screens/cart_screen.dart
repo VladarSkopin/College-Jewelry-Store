@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'custom_order_screen.dart';
 
 
 class CartScreen extends StatefulWidget {
@@ -31,17 +33,43 @@ class _CartScreenState extends State<CartScreen> {
         ),
         child: Column(
           children: [
-            SizedBox(height: 50),
-            Text('Ваша корзина пуста.', style: TextStyle(
+            const Image(image: AssetImage('assets/empty_box.png'), width: 200, height: 200),
+            const Text('Ваша корзина пуста.', style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500
             )),
-            SizedBox(height: 50),
-            Text('Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              child: Text('Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.', style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500
+              ),
+                  textAlign: TextAlign.center),
             ),
-            textAlign: TextAlign.center,),
+            MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: const Duration(milliseconds: 800),
+                          child: const CustomOrderScreen()
+                      )
+                  );
+                },
+                color: const Color(0xFF256D85),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                elevation: 6.0,
+                shape: const StadiumBorder(
+                    side: BorderSide(
+                        color: Color(0xFF4A93FF)
+                    )
+                ),
+                child: const Text('ПОИСК ИЗДЕЛИЙ', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16
+                ))),
+
           ],
         )
     );

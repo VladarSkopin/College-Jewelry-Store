@@ -40,31 +40,30 @@ class _OrderScreenState extends State<OrderScreen> {
             fontWeight: FontWeight.w500
           ), textAlign: TextAlign.center),
           const SizedBox(height: 30),
-          MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    PageTransition(
-                        type: PageTransitionType.size,
-                        alignment: Alignment.bottomCenter,
-                        duration: const Duration(milliseconds: 1200),
-                        child: const CustomOrderScreen()
-                    )
-                );
-              },
-              color: const Color(0xFF4A93FF),
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-                side: const BorderSide(
-                  color: Colors.white
+        MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      alignment: Alignment.bottomCenter,
+                      duration: const Duration(milliseconds: 800),
+                      child: const CustomOrderScreen()
+                  )
+              );
+            },
+            color: const Color(0xFF256D85),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            elevation: 6.0,
+            shape: const StadiumBorder(
+                side: BorderSide(
+                    color: Color(0xFF4A93FF)
                 )
-              ),
-          child: const Text('НАЧАТЬ', style: TextStyle(
-            color: Colors.white,
-            fontSize: 20
-          ))),
+            ),
+            child: const Text('ПОИСК ИЗДЕЛИЙ', style: TextStyle(
+                color: Colors.white,
+                fontSize: 18
+            ))),
           const SizedBox(height: 80),
           const Text('Хотите посмотреть нашу полную коллекцию?', style: TextStyle(
             fontSize: 20,
@@ -74,27 +73,26 @@ class _OrderScreenState extends State<OrderScreen> {
           MaterialButton(
               onPressed: () {
                 Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.scale,
-                    alignment: Alignment.bottomCenter,
-                    duration: const Duration(milliseconds: 1200),
-                    child: const CollectionScreen()
-                  )
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        alignment: Alignment.bottomCenter,
+                        duration: const Duration(milliseconds: 800),
+                        child: const CollectionScreen()
+                    )
                 );
               },
-              color: const Color(0xFF4A93FF),
+              color: const Color(0xFF256D85),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  side: const BorderSide(
-                      color: Colors.white
+              shape: const StadiumBorder(
+                  side: BorderSide(
+                      color: Color(0xFF4A93FF)
                   )
               ),
-              child: const Text('КОНЕЧНО', style: TextStyle(
+              child: const Text('ПЕРЕЙТИ В КАТАЛОГ', style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20
+                  fontSize: 18
               ))),
         ],
       )

@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           unselectedIconTheme: IconThemeData(
               size: 15
           ),
-          showUnselectedLabels: false,
+          //showUnselectedLabels: false,
           selectedLabelStyle: TextStyle(
             color: Color(0xFFDFF6FF),
             fontSize: 18
