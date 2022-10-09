@@ -11,3 +11,5 @@ by Skopintsev Alexander
 
 ![Jewelry Store App 2](/jewelry_screenshot_2.PNG?raw=true "Jewelry Store App 2")
 
+
+![Jewelry Store App 3](/jewelry_screenshot_3.PNG?raw=true "Jewelry Store App 3")
