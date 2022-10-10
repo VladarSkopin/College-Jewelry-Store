@@ -1,3 +1,4 @@
+import 'package:college_jewelry_store/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           ChangeNotifierProvider(create: (context) => CartManager())
         ],
-          child: const HomePage()
+          child: const WelcomePage()
       )
     );
   }

@@ -33,9 +33,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartManager>(
-        builder: (context, cartManager, child) {
-          return SafeArea(
+    return ChangeNotifierProvider(
+        create: (context) => CartManager(),
+          child: SafeArea(
             child: Scaffold(
               appBar: AppBar(
                   title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'), centerTitle: true),
@@ -61,8 +61,7 @@ class _HomePageState extends State<HomePage> {
 
               ),
             ),
-          );
-        }
+          )
     );
   }
 }

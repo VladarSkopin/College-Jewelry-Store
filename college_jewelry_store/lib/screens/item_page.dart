@@ -1,4 +1,5 @@
 
+import 'package:college_jewelry_store/db/cart_database.dart';
 import 'package:flutter/material.dart';
 import '../models/catalog_model.dart';
 import 'package:intl/intl.dart' as intl;
@@ -31,6 +32,8 @@ class _ItemPageState extends State<ItemPage> {
         )
       ]
   );
+
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +92,9 @@ class _ItemPageState extends State<ItemPage> {
                   width: 300,
                   height: 60,
                   child: MaterialButton(
-                    onPressed: () {
+                    onPressed: () async {
+
+                      await CartDatabase.instance.create(widget.item);
 
                       showDialog(
                           context: context,
@@ -105,7 +110,8 @@ class _ItemPageState extends State<ItemPage> {
                             actionsAlignment: MainAxisAlignment.center,
                             actions: [
                               TextButton(
-                                onPressed: () => Navigator.pop(context),
+                                //onPressed: () => Navigator.pop(context),
+                                onPressed: () => Navigator.popUntil(context, (route) => count++ == 2),
                                 child: const Text('Ок', style: TextStyle(
                                   color: Color(0xFF47B5FF),
                                   fontSize: 28
@@ -125,6 +131,7 @@ class _ItemPageState extends State<ItemPage> {
                     elevation: 6.0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
                       children: const [
                         Icon(
                             Icons.shopping_cart_outlined,
@@ -134,7 +141,7 @@ class _ItemPageState extends State<ItemPage> {
                         VerticalDivider(
                           color: Colors.grey,
                           thickness: 1,
-                          width: 1,
+                          width: 30,
                         ),
                         Text(
                           'ДОБАВИТЬ В КОРЗИНУ',
