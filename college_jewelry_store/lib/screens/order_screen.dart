@@ -35,7 +35,8 @@ class _OrderScreenState extends State<OrderScreen> {
       child: Column(
         children: [
           const SizedBox(height: 50),
-          const Text('Здесь вы можете собрать свой заказ:', style: TextStyle(
+          const Text('Здесь вы можете собрать свой заказ:',
+              style: TextStyle(
               fontSize: 20,
             fontWeight: FontWeight.w500
           ), textAlign: TextAlign.center),
@@ -65,9 +66,10 @@ class _OrderScreenState extends State<OrderScreen> {
                 fontSize: 18
             ))),
           const SizedBox(height: 80),
-          const Text('Хотите посмотреть нашу полную коллекцию?', style: TextStyle(
+          const Text('Хотите посмотреть нашу полную коллекцию?',
+              style: TextStyle(
             fontSize: 20,
-              fontWeight: FontWeight.w500
+              fontWeight: FontWeight.w500,
           ), textAlign: TextAlign.center),
           const SizedBox(height: 30),
           MaterialButton(

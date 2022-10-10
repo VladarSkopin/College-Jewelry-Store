@@ -1,6 +1,8 @@
 
+import 'package:college_jewelry_store/db/cart_database.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import '../models/catalog_model.dart';
 import 'custom_order_screen.dart';
 
 
@@ -12,6 +14,34 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+
+  late List<Jewelry> jewelryList;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    refreshCart();
+  }
+
+  @override
+  void dispose() {
+    //CartDatabase.instance.close(); // Unhandled Exception -> database closed !
+    super.dispose();
+  }
+
+  Future refreshCart() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    this.jewelryList = await CartDatabase.instance.readAllJewelry();
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,47 +61,83 @@ class _CartScreenState extends State<CartScreen> {
                 begin: Alignment.bottomCenter
             )
         ),
-        child: Column(
-          children: [
-            const Image(image: AssetImage('assets/empty_box.png'), width: 200, height: 200),
-            const Text('Ваша корзина пуста.', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500
-            )),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              child: Text('Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.', style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500
-              ),
-                  textAlign: TextAlign.center),
-            ),
-            MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.fade,
-                          duration: const Duration(milliseconds: 800),
-                          child: const CustomOrderScreen()
-                      )
-                  );
-                },
-                color: const Color(0xFF256D85),
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                elevation: 6.0,
-                shape: const StadiumBorder(
-                    side: BorderSide(
-                        color: Color(0xFF4A93FF)
-                    )
-                ),
-                child: const Text('ПОИСК ИЗДЕЛИЙ', style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16
-                ))),
+        child: isLoading ? Center(
+          child: CircularProgressIndicator(),
+        ) : jewelryList.isEmpty ? buildEmptyCartPage()
+            : buildReadyCartPage()
+    );
+  }
 
-          ],
-        )
+  Widget buildEmptyCartPage() {
+    return Column(
+      children: [
+        const Image(image: AssetImage('assets/empty_box.png'), width: 200, height: 200),
+        const Text('Ваша корзина пуста.', style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+        )),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          child: Text('Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.', style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+              textAlign: TextAlign.center),
+        ),
+        MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: const Duration(milliseconds: 800),
+                      child: const CustomOrderScreen()
+                  )
+              );
+            },
+            color: const Color(0xFF256D85),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            elevation: 6.0,
+            shape: const StadiumBorder(
+                side: BorderSide(
+                    color: Color(0xFF4A93FF)
+                )
+            ),
+            child: const Text('ПОИСК ИЗДЕЛИЙ', style: TextStyle(
+                color: Colors.white,
+                fontSize: 16
+            ))),
+
+      ],
+    );
+  }
+
+  Widget buildReadyCartPage() {
+    return Column(
+      children: [
+        const Text('Ваши товары:', style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+        )),
+        MaterialButton(
+            onPressed: () {
+
+              refreshCart();
+            },
+            color: const Color(0xFF256D85),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            elevation: 6.0,
+            shape: const StadiumBorder(
+                side: BorderSide(
+                    color: Color(0xFF4A93FF)
+                )
+            ),
+            child: const Text('КУПИТЬ ИЗДЕЛИЯ', style: TextStyle(
+                color: Colors.white,
+                fontSize: 16
+            ))),
+
+      ],
     );
   }
 }

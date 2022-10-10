@@ -822,11 +822,29 @@ class CatalogModel {
     ),
 
   ];
-
 }
 
+
+final String tableCart = 'tableCart';
+
+class CartFields {
+  static final List<String> values = [
+    id, price, label, imgUrl, type, metal, gem
+  ];
+
+  static final String id = '_id';
+  static final String price = 'price';
+  static final String label = 'label';
+  static final String imgUrl = 'imgUrl';
+  static final String type = 'type';
+  static final String metal = 'metal';
+  static final String gem = 'gem';
+}
+
+
 class Jewelry {
-  int id;
+
+  int? id;
   int price;
   String label;
   String imgUrl;
@@ -835,7 +853,7 @@ class Jewelry {
   String gem;
 
   Jewelry({
-    required this.id,
+    this.id,
     required this.price,
     required this.imgUrl,
     required this.label,
@@ -843,4 +861,64 @@ class Jewelry {
     required this.metal,
     required this.gem
   });
+
+  Jewelry.fromMap(Map<String, dynamic> data)
+      : id = data['id'],
+  price = data['price'],
+  imgUrl = data['imgUrl'],
+  label = data['label'],
+  type = data['type'],
+  metal = data['metal'],
+  gem = data['gem'];
+  
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id' : id,
+      'price' : price,
+      'label' : label,
+      'imgUrl' : imgUrl,
+      'type' : type,
+      'metal' : metal,
+      'gem' : gem
+    };
+  }
+
+  Map<String, Object?> toJson() => {
+    CartFields.id : id,
+    CartFields.price : price,
+    CartFields.imgUrl : imgUrl,
+    CartFields.label : label,
+    CartFields.type : type,
+    CartFields.metal : metal,
+    CartFields.gem : gem
+  };
+
+  static Jewelry fromJson(Map<String, Object?> json) => Jewelry(
+    id: json[CartFields.id] as int?,
+    price: json[CartFields.price] as int,
+    imgUrl: json[CartFields.imgUrl] as String,
+    label: json[CartFields.label] as String,
+    type: json[CartFields.type] as String,
+    metal: json[CartFields.metal] as String,
+    gem: json[CartFields.gem] as String
+  );
+
+  Jewelry copy({
+    int? id,
+    int? price,
+    String? imgUrl,
+    String? label,
+    String? type,
+    String? metal,
+    String? gem
+  }) => Jewelry (
+    id: id ?? this.id,
+    price: price ?? this.price,
+    imgUrl: imgUrl ?? this.imgUrl,
+    label: label ?? this.label,
+    type: type ?? this.type,
+    metal: metal ?? this.metal,
+    gem: gem ?? this.gem
+  );
 }

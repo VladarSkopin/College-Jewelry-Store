@@ -63,10 +63,15 @@ class _ItemPageState extends State<ItemPage> {
             child: SizedBox(
               width: MediaQuery.of(context).size.height / 2.2,
               height: MediaQuery.of(context).size.height / 2.2,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image(
-                  image: AssetImage(widget.item.imgUrl),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    image: AssetImage(widget.item.imgUrl),
+                  ),
                 ),
               ),
             ),
