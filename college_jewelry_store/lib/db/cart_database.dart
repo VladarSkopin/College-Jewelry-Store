@@ -120,6 +120,7 @@ class CartDatabase {
     );
   }
 
+
   Future<int> delete(int id) async {
     final db = await instance.database;
 
@@ -130,9 +131,31 @@ class CartDatabase {
     );
   }
 
+  Future deleteAll() async {
+    final db = await instance.database;
+
+    //return await db.delete(tableCart);
+    //return await db.rawDelete('DELETE FROM $tableCart WHERE 1 = 1');
+
+    return await db.delete(
+        tableCart,
+        where: '1 = 1'
+    );
+  }
+
+
   Future close() async {
     final db = await instance.database;
     db.close();
   }
+
+
+/*
+  Future close() async {
+    final db = await instance.database;
+    _database = null;
+    return db.close();
+  }
+*/
 
 }

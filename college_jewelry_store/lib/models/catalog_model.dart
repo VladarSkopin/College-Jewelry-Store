@@ -3,7 +3,7 @@ class CatalogModel {
   static List<Jewelry> jewelryItems = [
     // RINGS
     Jewelry(
-      id: 1,
+      //id: 1,
       price: 5900,
       imgUrl: 'assets/rings/golden_ring.jpg',
       label: 'Золотое кольцо',
@@ -12,7 +12,7 @@ class CatalogModel {
       gem: 'none'
     ),
     Jewelry(
-        id: 2,
+        //id: 2,
         price: 13900,
         imgUrl: 'assets/rings/golden_amethyst_ring.jpg',
         label: 'Золотое кольцо - аметист',
@@ -21,7 +21,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 3,
+        //id: 3,
         price: 33900,
         imgUrl: 'assets/rings/golden_diamond_ring.jpg',
         label: 'Золотое кольцо - бриллиант',
@@ -30,7 +30,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 4,
+        //id: 4,
         price: 24000,
         imgUrl: 'assets/rings/golden_emerald_ring.jpg',
         label: 'Золотое кольцо - изумруд',
@@ -39,7 +39,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 5,
+        //id: 5,
         price: 28500,
         imgUrl: 'assets/rings/golden_ruby_ring.jpg',
         label: 'Золотое кольцо - рубин',
@@ -48,7 +48,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 6,
+        //id: 6,
         price: 19700,
         imgUrl: 'assets/rings/golden_sapphire_ring.jpg',
         label: 'Золотое кольцо - сапфир',
@@ -57,7 +57,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 7,
+        //id: 7,
         price: 6900,
         imgUrl: 'assets/rings/platinum_ring.jpg',
         label: 'Платиновое кольцо',
@@ -66,7 +66,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 8,
+        //id: 8,
         price: 16900,
         imgUrl: 'assets/rings/platinum_amethyst_ring.png',
         label: 'Платиновое кольцо - аметист',
@@ -75,7 +75,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 9,
+        //id: 9,
         price: 36900,
         imgUrl: 'assets/rings/platinum_diamond_ring.png',
         label: 'Платиновое кольцо - бриллиант',
@@ -84,7 +84,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 10,
+        //id: 10,
         price: 24900,
         imgUrl: 'assets/rings/platinum_emerald_ring.jpg',
         label: 'Платиновое кольцо - изумруд',
@@ -93,7 +93,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 11,
+        //id: 11,
         price: 28900,
         imgUrl: 'assets/rings/platinum_ruby_ring.jpg',
         label: 'Платиновое кольцо - рубин',
@@ -102,7 +102,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 12,
+        //id: 12,
         price: 22400,
         imgUrl: 'assets/rings/platinum_sapphire_ring.png',
         label: 'Платиновое кольцо - сапфир',
@@ -111,7 +111,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 13,
+        //id: 13,
         price: 2900,
         imgUrl: 'assets/rings/silver_ring.png',
         label: 'Серебряное кольцо',
@@ -120,7 +120,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 14,
+        //id: 14,
         price: 12900,
         imgUrl: 'assets/rings/silver_amethyst_ring.png',
         label: 'Серебряное кольцо - аметист',
@@ -129,7 +129,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 15,
+        //id: 15,
         price: 32900,
         imgUrl: 'assets/rings/silver_diamond_ring.png',
         label: 'Серебряное кольцо - бриллиант',
@@ -138,7 +138,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 16,
+        //id: 16,
         price: 20900,
         imgUrl: 'assets/rings/silver_emerald_ring.jpg',
         label: 'Серебряное кольцо - изумруд',
@@ -147,7 +147,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 17,
+        //id: 17,
         price: 24900,
         imgUrl: 'assets/rings/silver_ruby_ring.jpeg',
         label: 'Серебряное кольцо - рубин',
@@ -156,7 +156,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 18,
+        //id: 18,
         price: 18400,
         imgUrl: 'assets/rings/silver_sapphire_ring.png',
         label: 'Серебряное кольцо - сапфир',
@@ -167,7 +167,7 @@ class CatalogModel {
 
     // BRACELETS
     Jewelry(
-        id: 19,
+        //id: 19,
         price: 18900,
         imgUrl: 'assets/bracelets/golden_amethyst_bracelet.jpg',
         label: 'Золотой браслет - аметист',
@@ -176,7 +176,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 20,
+        //id: 20,
         price: 8900,
         imgUrl: 'assets/bracelets/golden_bracelet.jpg',
         label: 'Золотой браслет',
@@ -185,7 +185,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 21,
+        //id: 21,
         price: 38900,
         imgUrl: 'assets/bracelets/golden_diamond_bracelet.jpg',
         label: 'Золотой браслет - бриллиант',
@@ -194,7 +194,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 22,
+        //id: 22,
         price: 26900,
         imgUrl: 'assets/bracelets/golden_emerald_bracelet.jpg',
         label: 'Золотой браслет - изумруд',
@@ -203,7 +203,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 23,
+        //id: 23,
         price: 30900,
         imgUrl: 'assets/bracelets/golden_ruby_bracelet.jpg',
         label: 'Золотой браслет - рубин',
@@ -212,7 +212,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 24,
+        //id: 24,
         price: 24400,
         imgUrl: 'assets/bracelets/golden_sapphire_bracelet.jpg',
         label: 'Золотой браслет - сапфир',
@@ -221,7 +221,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 25,
+        //id: 25,
         price: 19900,
         imgUrl: 'assets/bracelets/platinum_amethyst_bracelet.jpg',
         label: 'Платиновый браслет - аметист',
@@ -230,7 +230,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 26,
+        //id: 26,
         price: 9900,
         imgUrl: 'assets/bracelets/platinum_bracelet.jpg',
         label: 'Платиновый браслет',
@@ -239,7 +239,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 27,
+        //id: 27,
         price: 39900,
         imgUrl: 'assets/bracelets/platinum_diamond_bracelet.jpg',
         label: 'Платиновый браслет - бриллиант',
@@ -248,7 +248,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 28,
+        //id: 28,
         price: 27900,
         imgUrl: 'assets/bracelets/platinum_emerald_bracelet.jpg',
         label: 'Платиновый браслет - изумруд',
@@ -257,7 +257,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 29,
+        //id: 29,
         price: 31900,
         imgUrl: 'assets/bracelets/platinum_ruby_bracelet.jpg',
         label: 'Платиновый браслет - рубин',
@@ -266,7 +266,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 30,
+        //id: 30,
         price: 25400,
         imgUrl: 'assets/bracelets/platinum_sapphire_bracelet.png',
         label: 'Платиновый браслет - сапфир',
@@ -275,7 +275,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 31,
+        //id: 31,
         price: 15900,
         imgUrl: 'assets/bracelets/silver_amethyst_bracelet.jpg',
         label: 'Серебряный браслет - аметист',
@@ -284,7 +284,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 32,
+        //id: 32,
         price: 5900,
         imgUrl: 'assets/bracelets/silver_bracelet.jpg',
         label: 'Серебряный браслет',
@@ -293,7 +293,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 33,
+        //id: 33,
         price: 35900,
         imgUrl: 'assets/bracelets/silver_diamond_bracelet.png',
         label: 'Серебряный браслет - бриллиант',
@@ -302,7 +302,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 34,
+        //id: 34,
         price: 23900,
         imgUrl: 'assets/bracelets/silver_emerald_bracelet.png',
         label: 'Серебряный браслет - изумруд',
@@ -311,7 +311,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 35,
+        //id: 35,
         price: 27900,
         imgUrl: 'assets/bracelets/silver_ruby_bracelet.jpg',
         label: 'Серебряный браслет - рубин',
@@ -320,7 +320,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 36,
+        //id: 36,
         price: 21400,
         imgUrl: 'assets/bracelets/silver_sapphire_bracelet.jpg',
         label: 'Серебряный браслет - сапфир',
@@ -331,7 +331,7 @@ class CatalogModel {
 
     // BROOCHES
     Jewelry(
-        id: 37,
+        //id: 37,
         price: 17900,
         imgUrl: 'assets/brooches/golden_amethyst_brooch.jpg',
         label: 'Золотая брошка - аметист',
@@ -340,7 +340,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 38,
+        //id: 38,
         price: 7900,
         imgUrl: 'assets/brooches/golden_brooch.jpg',
         label: 'Золотая брошка',
@@ -349,7 +349,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 39,
+        //id: 39,
         price: 37900,
         imgUrl: 'assets/brooches/golden_diamond_brooch.jpg',
         label: 'Золотая брошка - бриллиант',
@@ -358,7 +358,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 40,
+        //id: 40,
         price: 25900,
         imgUrl: 'assets/brooches/golden_emerald_brooch.jpg',
         label: 'Золотая брошка - изумруд',
@@ -367,7 +367,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 41,
+        //id: 41,
         price: 29900,
         imgUrl: 'assets/brooches/golden_ruby_brooch.jpeg',
         label: 'Золотая брошка - рубин',
@@ -376,7 +376,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 42,
+        //id: 42,
         price: 23400,
         imgUrl: 'assets/brooches/golden_sapphire_brooch.jpg',
         label: 'Золотая брошка - сапфир',
@@ -385,7 +385,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 43,
+        //id: 43,
         price: 18900,
         imgUrl: 'assets/brooches/platinum_amethyst_brooch.jpg',
         label: 'Платиновая брошка - аметист',
@@ -394,7 +394,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 44,
+        //id: 44,
         price: 8900,
         imgUrl: 'assets/brooches/platinum_brooch.jpg',
         label: 'Платиновая брошка',
@@ -403,7 +403,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 45,
+        //id: 45,
         price: 38900,
         imgUrl: 'assets/brooches/platinum_diamond_brooch.jpg',
         label: 'Платиновая брошка - бриллиант',
@@ -412,7 +412,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 46,
+        //id: 46,
         price: 26900,
         imgUrl: 'assets/brooches/platinum_emerald_brooch.jpg',
         label: 'Платиновая брошка - изумруд',
@@ -421,7 +421,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 47,
+        //id: 47,
         price: 30900,
         imgUrl: 'assets/brooches/platinum_ruby_brooch.jpg',
         label: 'Платиновая брошка - рубин',
@@ -430,7 +430,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 48,
+        //id: 48,
         price: 24400,
         imgUrl: 'assets/brooches/platinum_sapphire_brooch.jpg',
         label: 'Платиновая брошка - сапфир',
@@ -439,7 +439,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 49,
+        //id: 49,
         price: 14900,
         imgUrl: 'assets/brooches/silver_amethyst_brooch.jpg',
         label: 'Серебряная брошка - аметист',
@@ -448,7 +448,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 50,
+        //id: 50,
         price: 4900,
         imgUrl: 'assets/brooches/silver_brooch.jpg',
         label: 'Серебряная брошка',
@@ -457,7 +457,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 51,
+        //id: 51,
         price: 34900,
         imgUrl: 'assets/brooches/silver_diamond_brooch.jpg',
         label: 'Серебряная брошка - бриллиант',
@@ -466,7 +466,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 52,
+        //id: 52,
         price: 22900,
         imgUrl: 'assets/brooches/silver_emerald_brooch.jpg',
         label: 'Серебряная брошка - изумруд',
@@ -475,7 +475,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 53,
+        //id: 53,
         price: 26900,
         imgUrl: 'assets/brooches/silver_ruby_brooch.jpg',
         label: 'Серебряная брошка - рубин',
@@ -484,7 +484,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 54,
+        //id: 54,
         price: 20400,
         imgUrl: 'assets/brooches/silver_sapphire_brooch.jpg',
         label: 'Серебряная брошка - сапфир',
@@ -495,7 +495,7 @@ class CatalogModel {
 
     // NECKLACES
     Jewelry(
-        id: 55,
+        //id: 55,
         price: 17999,
         imgUrl: 'assets/necklace/golden_amethyst_necklace.jpg',
         label: 'Золотое ожерелье - аметист',
@@ -504,7 +504,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 56,
+        //id: 56,
         price: 37999,
         imgUrl: 'assets/necklace/golden_diamond_necklace.jpeg',
         label: 'Золотое ожерелье - бриллиант',
@@ -513,7 +513,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 57,
+        //id: 57,
         price: 25999,
         imgUrl: 'assets/necklace/golden_emerald_necklace.jpg',
         label: 'Золотое ожерелье - изумруд',
@@ -522,7 +522,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 58,
+        //id: 58,
         price: 7999,
         imgUrl: 'assets/necklace/golden_necklace.png',
         label: 'Золотое ожерелье',
@@ -531,7 +531,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 59,
+        //id: 59,
         price: 29999,
         imgUrl: 'assets/necklace/golden_ruby_necklace.png',
         label: 'Золотое ожерелье - рубин',
@@ -540,7 +540,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 60,
+        //id: 60,
         price: 23499,
         imgUrl: 'assets/necklace/golden_sapphire_necklace.jpeg',
         label: 'Золотое ожерелье - сапфир',
@@ -549,7 +549,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 61,
+        //id: 61,
         price: 18999,
         imgUrl: 'assets/necklace/platinum_amethyst_necklace.jpg',
         label: 'Платиновое ожерелье - аметист',
@@ -558,7 +558,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 62,
+        //id: 62,
         price: 38999,
         imgUrl: 'assets/necklace/platinum_diamond_necklace.jpg',
         label: 'Платиновое ожерелье - бриллиант',
@@ -567,7 +567,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 63,
+        //id: 63,
         price: 26999,
         imgUrl: 'assets/necklace/platinum_emerald_necklace.jpg',
         label: 'Платиновое ожерелье - изумруд',
@@ -576,7 +576,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 64,
+        //id: 64,
         price: 8999,
         imgUrl: 'assets/necklace/platinum_necklace.png',
         label: 'Платиновое ожерелье',
@@ -585,7 +585,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 65,
+        //id: 65,
         price: 30999,
         imgUrl: 'assets/necklace/platinum_ruby_necklace.jpg',
         label: 'Платиновое ожерелье - рубин',
@@ -594,7 +594,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 66,
+        //id: 66,
         price: 24499,
         imgUrl: 'assets/necklace/platinum_sapphire_necklace.jpg',
         label: 'Платиновое ожерелье - сапфир',
@@ -603,7 +603,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 67,
+        //id: 67,
         price: 14999,
         imgUrl: 'assets/necklace/silver_amethyst_necklace.jpg',
         label: 'Серебряное ожерелье - аметист',
@@ -612,7 +612,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 68,
+        //id: 68,
         price: 34999,
         imgUrl: 'assets/necklace/silver_diamond_necklace.jpg',
         label: 'Серебряное ожерелье - бриллиант',
@@ -621,7 +621,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 69,
+        //id: 69,
         price: 22999,
         imgUrl: 'assets/necklace/silver_emerald_necklace.jpeg',
         label: 'Серебряное ожерелье - изумруд',
@@ -630,7 +630,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 70,
+        //id: 70,
         price: 4999,
         imgUrl: 'assets/necklace/silver_necklace.png',
         label: 'Серебряное ожерелье',
@@ -639,7 +639,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 71,
+        //id: 71,
         price: 26999,
         imgUrl: 'assets/necklace/silver_ruby_necklace.png',
         label: 'Серебряное ожерелье - рубин',
@@ -648,7 +648,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 72,
+        //id: 72,
         price: 20499,
         imgUrl: 'assets/necklace/silver_sapphire_necklace.jpg',
         label: 'Серебряное ожерелье - сапфир',
@@ -659,7 +659,7 @@ class CatalogModel {
 
     // EARRINGS
     Jewelry(
-        id: 73,
+        //id: 73,
         price: 14999,
         imgUrl: 'assets/earrings/golden_amethyst_earrings.jpg',
         label: 'Золотые серёжки - аметист',
@@ -668,7 +668,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 74,
+        //id: 74,
         price: 34999,
         imgUrl: 'assets/earrings/golden_diamond_earrings.png',
         label: 'Золотые серёжки - бриллиант',
@@ -677,7 +677,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 75,
+        //id: 75,
         price: 4999,
         imgUrl: 'assets/earrings/golden_earrings.jpg',
         label: 'Золотые серёжки',
@@ -686,7 +686,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 76,
+        //id: 76,
         price: 22999,
         imgUrl: 'assets/earrings/golden_emerald_earrings.jpg',
         label: 'Золотые серёжки - изумруд',
@@ -695,7 +695,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 77,
+        //id: 77,
         price: 26999,
         imgUrl: 'assets/earrings/golden_ruby_earrings.jpg',
         label: 'Золотые серёжки - рубин',
@@ -704,7 +704,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 78,
+        //id: 78,
         price: 20499,
         imgUrl: 'assets/earrings/golden_sapphire_earrings.jpeg',
         label: 'Золотые серёжки - сапфир',
@@ -713,7 +713,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 79,
+        //id: 79,
         price: 15999,
         imgUrl: 'assets/earrings/platinum_amethyst_earrings.jpg',
         label: 'Платиновые серёжки - аметист',
@@ -722,7 +722,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 80,
+        //id: 80,
         price: 35999,
         imgUrl: 'assets/earrings/platinum_diamond_earrings.jpg',
         label: 'Платиновые серёжки - бриллиант',
@@ -731,7 +731,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 81,
+        //id: 81,
         price: 5999,
         imgUrl: 'assets/earrings/platinum_earrings.jpg',
         label: 'Платиновые серёжки',
@@ -740,7 +740,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 82,
+        //id: 82,
         price: 23999,
         imgUrl: 'assets/earrings/platinum_emerald_earrings.jpg',
         label: 'Платиновые серёжки - изумруд',
@@ -749,7 +749,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 83,
+        //id: 83,
         price: 27999,
         imgUrl: 'assets/earrings/platinum_ruby_earrings.jpg',
         label: 'Платиновые серёжки - рубин',
@@ -758,7 +758,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 84,
+        //id: 84,
         price: 21499,
         imgUrl: 'assets/earrings/platinum_sapphire_earrings.jpg',
         label: 'Платиновые серёжки - сапфир',
@@ -767,7 +767,7 @@ class CatalogModel {
         gem: 'sapphire'
     ),
     Jewelry(
-        id: 85,
+        //id: 85,
         price: 11999,
         imgUrl: 'assets/earrings/silver_amethyst_earrings.png',
         label: 'Серебряные серёжки - аметист',
@@ -776,7 +776,7 @@ class CatalogModel {
         gem: 'amethyst'
     ),
     Jewelry(
-        id: 86,
+        //id: 86,
         price: 31999,
         imgUrl: 'assets/earrings/silver_diamond_earrings.jpg',
         label: 'Серебряные серёжки - бриллиант',
@@ -785,7 +785,7 @@ class CatalogModel {
         gem: 'diamond'
     ),
     Jewelry(
-        id: 87,
+        //id: 87,
         price: 1999,
         imgUrl: 'assets/earrings/silver_earrings.jpg',
         label: 'Серебряные серёжки',
@@ -794,7 +794,7 @@ class CatalogModel {
         gem: 'none'
     ),
     Jewelry(
-        id: 88,
+        //id: 88,
         price: 19999,
         imgUrl: 'assets/earrings/silver_emerald_earrings.png',
         label: 'Серебряные серёжки - изумруд',
@@ -803,7 +803,7 @@ class CatalogModel {
         gem: 'emerald'
     ),
     Jewelry(
-        id: 89,
+        //id: 89,
         price: 23999,
         imgUrl: 'assets/earrings/silver_ruby_earrings.jpg',
         label: 'Серебряные серёжки - рубин',
@@ -812,7 +812,7 @@ class CatalogModel {
         gem: 'ruby'
     ),
     Jewelry(
-        id: 90,
+        //id: 90,
         price: 17499,
         imgUrl: 'assets/earrings/silver_sapphire_earrings.png',
         label: 'Серебряные серёжки - сапфир',
