@@ -38,11 +38,24 @@ class UsersDatabase {
     ''');
   }
 
-  Future<User> create(User user) async {
+  Future<User?> create(User user) async {
     final db = await instance.database;
 
-    final id = await db.insert(tableUsers, user.toJson());
-    return user.copy(id: id);
+    final maps = await db.query(
+        tableUsers,
+        columns: UsersFields.values,
+        where: '${UsersFields.login} = ?',
+        whereArgs: [user.login]
+    );
+
+    if (maps.isEmpty) {
+      final id = await db.insert(tableUsers, user.toJson());
+      return user.copy(id: id);
+    } else {
+      throw Exception('USER LOGIN = ${user.login} ALREADY EXISTS !!!');
+    }
+
+
   }
 
   Future<User?> createAdmin(User userAdmin) async {
@@ -79,6 +92,61 @@ class UsersDatabase {
     }
   }
 
+  Future<bool> readUserLogin(String login) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+        tableUsers,
+        columns: UsersFields.values,
+        where: '${UsersFields.login} = ?',
+        whereArgs: [login]
+    );
+
+    if (maps.isNotEmpty) {
+      //return User.fromJson(maps.first).login;
+      return true;
+    } else {
+      return false;
+      //throw Exception('LOGIN = $login NOT FOUND !!!');
+    }
+  }
+
+
+  Future<bool> readUserPassword(String password) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+        tableUsers,
+        columns: UsersFields.values,
+        where: '${UsersFields.password} = ?',
+        whereArgs: [password]
+    );
+
+    if (maps.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<String> getUserName(String login) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+        tableUsers,
+        columns: UsersFields.values,
+        where: '${UsersFields.login} = ?',
+        whereArgs: [login]
+    );
+
+    if (maps.isNotEmpty) {
+      return User.fromJson(maps.first).userName;
+    } else {
+      return 'Аноним';
+    }
+  }
+
+
   Future<List<User>> readAllUsers() async {
     final db = await instance.database;
 
@@ -105,6 +173,15 @@ class UsersDatabase {
       tableUsers,
       where: '${UsersFields.id} = ?',
       whereArgs: [id]
+    );
+  }
+
+  Future deleteAllUsers() async {
+    final db = await instance.database;
+
+    return await db.delete(
+        tableUsers,
+        where: '1 = 1'
     );
   }
 

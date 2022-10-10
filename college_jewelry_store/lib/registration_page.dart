@@ -1,5 +1,6 @@
 
-import 'package:college_jewelry_store/welcome_page.dart';
+import 'package:college_jewelry_store/db/users_database.dart';
+import 'package:college_jewelry_store/models/users_model.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -16,7 +17,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   late final FocusNode _passwordFocusNode;
 
   final _txtStyle = const TextStyle(color: Color(0xFF256D85), fontSize: 20);
-  final _btnTxtStyle = TextStyle(color: Colors.white, fontSize: 18);
+  final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 18);
+  final _fieldTxtStyle = const TextStyle(color: Colors.blueAccent, fontSize: 20);
 
   String _userName = '';
   String _email = '';
@@ -44,7 +46,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text('РЕГИСТРАЦИЯ')),
+      appBar: AppBar(title: const Text('РЕГИСТРАЦИЯ')),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -67,6 +69,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 cursorColor: Colors.purple,
                 cursorWidth: 1.8,
                 textAlign: TextAlign.center,
+                style: _fieldTxtStyle,
                 decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.person),
                     hintText: 'Имя: ',
@@ -110,6 +113,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 cursorColor: Colors.purple,
                 cursorWidth: 1.8,
                 textAlign: TextAlign.center,
+                style: _fieldTxtStyle,
                 decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email_outlined),
                     hintText: 'Почта: ',
@@ -153,6 +157,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 cursorColor: Colors.purple,
                 cursorWidth: 1.8,
                 textAlign: TextAlign.center,
+                style: _fieldTxtStyle,
                 decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.login),
                     hintText: 'Логин: ',
@@ -193,6 +198,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 cursorColor: Colors.purple,
                 cursorWidth: 1.8,
                 textAlign: TextAlign.center,
+                style: _fieldTxtStyle,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.password),
                   hintText: 'Пароль: ',
@@ -220,7 +226,65 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 20),
             MaterialButton(
-              onPressed: () {
+              onPressed: () async {
+                User newUser = User(
+                  userName: _userName,
+                  email: _email,
+                  login: _login,
+                  password: _password
+                );
+
+                try {
+                  await UsersDatabase.instance.create(newUser);
+
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text(
+                            'Поздравляем, $_userName! Вы успешно зарегистрировались',
+                            style: const TextStyle(
+                                color: Color(0xFF256D85), fontSize: 24),
+                            textAlign: TextAlign.center),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        backgroundColor: const Color(0xFFDFF6FF),
+                        actionsAlignment: MainAxisAlignment.center,
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Ок',
+                                style: TextStyle(
+                                    color: Color(0xFF47B5FF), fontSize: 28)),
+                          ),
+                        ],
+                      ));
+
+                } catch (ex) {
+
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text(
+                            'К сожалению, пользователь с таким логином (логин = $_login) уже существует. Попробуйте другой логин',
+                            style: const TextStyle(
+                                color: Color(0xFF256D85), fontSize: 24),
+                            textAlign: TextAlign.center),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        backgroundColor: const Color(0xFFDFF6FF),
+                        actionsAlignment: MainAxisAlignment.center,
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Ок',
+                                style: TextStyle(
+                                    color: Color(0xFF47B5FF), fontSize: 28)),
+                          ),
+                        ],
+                      ));
+
+                }
+
 
               },
               color: const Color(0xFF256D85),
@@ -244,7 +308,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const StadiumBorder(side: BorderSide(color: Color(0xFF4A93FF))),
               child: Text('ВХОД В ПРИЛОЖЕНИЕ', style: _btnTxtStyle),
             ),
-            const SizedBox(height: 20)
+            const SizedBox(height: 80)
           ],
         ),
       ),
