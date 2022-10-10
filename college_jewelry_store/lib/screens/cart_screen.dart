@@ -50,6 +50,8 @@ class _CartScreenState extends State<CartScreen> {
       isLoading = true;
     });
 
+    await Future.delayed(Duration(seconds: 1));
+
     this.jewelryList = await CartDatabase.instance.readAllJewelry();
 
     setState(() {
@@ -85,70 +87,84 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Widget buildEmptyCartPage() {
-    return Column(
-      children: [
-        const Image(
-            image: AssetImage('assets/empty_box.png'), width: 180, height: 180),
-        const Text('Ваша корзина пуста.',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-            )),
-        const SizedBox(height: 16),
-        MaterialButton(
-            onPressed: () {
-              refreshCart();
-            },
-            color: Colors.lightBlueAccent,
-            shape: const StadiumBorder(),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(
-                    Icons.refresh,
-                    color: Color(0xFFDFF6FF),
-                    size: 28
-                ),
-                SizedBox(width: 10),
-                Text(
-                    'Обновить',
-                    style: TextStyle(
+    return RefreshIndicator(
+      onRefresh: () async {
+        refreshCart();
+      },
+      color: Colors.white,
+      backgroundColor: Color(0xFF9C2C77),
+      strokeWidth: 4,
+      edgeOffset: 10,
+      displacement: 80.0,
+      triggerMode: RefreshIndicatorTriggerMode.anywhere,
+      child: ListView(
+        children: [Column(
+          children: [
+            const Image(
+                image: AssetImage('assets/empty_box.png'), width: 180, height: 180),
+            const Text('Ваша корзина пуста.',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                )),
+            const SizedBox(height: 16),
+            MaterialButton(
+                onPressed: () {
+                  refreshCart();
+                },
+                color: Colors.lightBlueAccent,
+                shape: const StadiumBorder(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(
+                        Icons.refresh,
                         color: Color(0xFFDFF6FF),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600
-                    )),
-              ],
-            )),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-          child: Text(
-              'Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.center),
-        ),
-        const SizedBox(height: 10),
-        MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade,
-                      duration: const Duration(milliseconds: 800),
-                      child: const CustomOrderScreen()));
-            },
-            color: const Color(0xFF256D85),
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            elevation: 6.0,
-            shape:
-                const StadiumBorder(side: BorderSide(color: Color(0xFF4A93FF))),
-            child: const Text('ПОИСК ИЗДЕЛИЙ',
-                style: TextStyle(color: Colors.white, fontSize: 16))),
+                        size: 28
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                        'Обновить',
+                        style: TextStyle(
+                            color: Color(0xFFDFF6FF),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600
+                        )),
+                  ],
+                )),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: Text(
+                  'Чтобы совершить покупку, вам нужно сначала добавить товар в корзину.',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center),
+            ),
+            const SizedBox(height: 10),
+            MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: const Duration(milliseconds: 800),
+                          child: const CustomOrderScreen()));
+                },
+                color: const Color(0xFF256D85),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                elevation: 6.0,
+                shape:
+                    const StadiumBorder(side: BorderSide(color: Color(0xFF4A93FF))),
+                child: const Text('ПОИСК ИЗДЕЛИЙ',
+                    style: TextStyle(color: Colors.white, fontSize: 16))),
 
-      ],
+          ],
+        ),
+      ]
+      ),
     );
   }
 

@@ -1,4 +1,5 @@
 
+import 'package:college_jewelry_store/models/users_model.dart';
 import 'package:flutter/material.dart';
 
 class CartManager extends ChangeNotifier {
@@ -34,6 +35,15 @@ class CartManager extends ChangeNotifier {
 
   set gem(String gemName) {
     _gem = gemName;
+    notifyListeners();
+  }
+
+  String _currentUserLogin = 'admin';
+
+  String get currentUserLogin => _currentUserLogin;
+
+  set currentUserLogin(String login) {
+    _currentUserLogin = login;
     notifyListeners();
   }
 

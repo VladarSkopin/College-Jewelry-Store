@@ -92,7 +92,7 @@ class CartDatabase {
     if (maps.isNotEmpty) {
       return Jewelry.fromJson(maps.first); // retrieve the first row (?)
     } else {
-      throw Exception('ID $id NOT FOUND !');
+      throw Exception('ID $id OF JEWELRY NOT FOUND !');
     }
   }
 
