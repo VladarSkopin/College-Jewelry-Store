@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'package:provider/provider.dart';
-
 import 'models/cart_manager.dart';
 
 void main() {
