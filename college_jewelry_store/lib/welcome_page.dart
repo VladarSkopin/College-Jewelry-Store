@@ -20,9 +20,9 @@ class _WelcomePageState extends State<WelcomePage> {
 
   late final FocusNode _passwordFocusNode;
 
-  final _txtStyle = const TextStyle(color: Color(0xFF256D85), fontSize: 20);
+  final _txtStyle = const TextStyle(color: Color(0xFFBBDAE7), fontSize: 20);
   final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 18);
-  final _fieldTxtStyle = const TextStyle(color: Colors.blueAccent, fontSize: 20);
+  final _fieldTxtStyle = const TextStyle(color: Colors.blueAccent, fontSize: 18);
 
   String _login = '';
   String _password = '';
@@ -32,15 +32,17 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    initializeAdmin();
+    //initializeAdmin();
     _passwordFocusNode = FocusNode();
   }
 
+ /*
   Future initializeAdmin() async {
     User userAdmin = User(userName: 'Администратор', login: 'admin', email: 'grudagor@gmail.com', password: 'mobadmin');
 
     await UsersDatabase.instance.createAdmin(userAdmin);
   }
+ */
 
   @override
   void dispose() {
@@ -55,7 +57,23 @@ class _WelcomePageState extends State<WelcomePage> {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(title: const Text('ДОБРО ПОЖАЛОВАТЬ!')),
-          body: SingleChildScrollView(
+          body: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF011411),
+                    Color(0xFF001717),
+                    Color(0xFF001a21),
+                    Color(0xFF001b2e),
+                    Color(0xFF001a3b),
+                    Color(0xFF001847),
+                    Color(0xFF00144f),
+                    Color(0xFF02084f),
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                )
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -85,8 +103,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       hintStyle: TextStyle(
                         fontSize: 18, color: Colors.grey[500]
                       ),
-                      //filled: true,
-                      //fillColor: Colors.white,
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.purple[300]!,
@@ -109,7 +127,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     focusNode: _passwordFocusNode,
                     onChanged: (text) {
                       setState(() {
-                        _password = text;
+                        _password = text.trim();
                       });
                     },
                     textInputAction: TextInputAction.done,
@@ -124,6 +142,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       hintStyle: TextStyle(
                           fontSize: 18, color: Colors.grey[500]
                       ),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.purple[300]!,
@@ -142,7 +162,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 40),
                 MaterialButton(
                   onPressed: () async {
-                    
+
                     bool loginExists = await UsersDatabase.instance.readUserLogin(_login);
                     bool passwordCorrect = await UsersDatabase.instance.readUserPassword(_password);
 
@@ -220,8 +240,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 30),
                 MaterialButton(
                   onPressed: () {
-
-
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const RegistrationPage()));

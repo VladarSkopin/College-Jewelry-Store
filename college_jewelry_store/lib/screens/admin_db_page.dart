@@ -15,22 +15,22 @@ class _AdminDbPageState extends State<AdminDbPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('СТРАНИЦА АДМИНИСТРАТОРА')),
+      appBar: AppBar(title: const Text('СТРАНИЦА АДМИНИСТРАТОРА', style: TextStyle(fontSize: 16))),
       body: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [
-                    Color(0xFFfff4e8),
-                    Color(0xFFfff6e9),
-                    Color(0xFFfff7ea),
-                    Color(0xFFfef9ec),
-                    Color(0xFFfefaed),
-                    Color(0xFFfefcef),
-                    Color(0xFFfdfdf0),
-                    Color(0xFFfdfff2),
+                    Color(0xFF011411),
+                    Color(0xFF001717),
+                    Color(0xFF001a21),
+                    Color(0xFF001b2e),
+                    Color(0xFF001a3b),
+                    Color(0xFF001847),
+                    Color(0xFF00144f),
+                    Color(0xFF02084f),
                   ],
                   begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter
+                  end: Alignment.bottomCenter,
               )
           ),
           child: Center(
@@ -39,6 +39,7 @@ class _AdminDbPageState extends State<AdminDbPage> {
                 const SizedBox(height: 50),
                 const Text('Администрирование пользователей:',
                     style: TextStyle(
+                      color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w500
                     ), textAlign: TextAlign.center),
@@ -90,6 +91,7 @@ class _AdminDbPageState extends State<AdminDbPage> {
                 const SizedBox(height: 60),
                 const Text('Администрирование каталога:',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ), textAlign: TextAlign.center),
