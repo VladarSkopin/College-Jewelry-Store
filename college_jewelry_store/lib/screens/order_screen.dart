@@ -4,6 +4,7 @@ import 'package:college_jewelry_store/screens/collection_screen.dart';
 import 'package:college_jewelry_store/screens/custom_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class OrderScreen extends StatefulWidget {
@@ -15,14 +16,26 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
 
+  String login = 'anonymous';
+  //late String login;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadCurrentUserLogin();
+  }
+
+  Future loadCurrentUserLogin() async {
+    await Future.delayed(const Duration(seconds: 1));
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      login = prefs.getString('login') ?? 'anonymous';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    // !!!
-
-    String login = 'admin';
-
-    // !!!
 
     /*
     return Center(

@@ -142,7 +142,7 @@ class UsersDatabase {
     if (maps.isNotEmpty) {
       return User.fromJson(maps.first).userName;
     } else {
-      return 'Аноним';
+      return 'Пользователь';
     }
   }
 
