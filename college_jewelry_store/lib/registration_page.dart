@@ -12,9 +12,14 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
 
+  late final FocusNode _usernameFocusNode;
   late final FocusNode _emailFocusNode;
   late final FocusNode _loginFocusNode;
   late final FocusNode _passwordFocusNode;
+  late TextEditingController _textFieldController_1;
+  late TextEditingController _textFieldController_2;
+  late TextEditingController _textFieldController_3;
+  bool _isInputTextObscure = true;
 
   final _txtStyle = const TextStyle(color: Color(0xFFBBDAE7), fontSize: 20);
   final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 18);
@@ -29,9 +34,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   void initState() {
     super.initState();
+    _textFieldController_1 = TextEditingController();
+    _textFieldController_2 = TextEditingController();
+    _textFieldController_3 = TextEditingController();
+    _usernameFocusNode = FocusNode();
     _emailFocusNode = FocusNode();
     _loginFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
+    _usernameFocusNode.addListener(() {
+      if (_usernameFocusNode.hasFocus) _textFieldController_1.clear();
+    });
+    _emailFocusNode.addListener(() {
+      if (_emailFocusNode.hasFocus) _textFieldController_2.clear();
+    });
+    _loginFocusNode.addListener(() {
+      if (_loginFocusNode.hasFocus) _textFieldController_3.clear();
+    });
   }
 
   @override
@@ -73,6 +91,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: TextFormField(
+                  focusNode: _usernameFocusNode,
+                  controller: _textFieldController_1,
                   onChanged: (text) {
                     setState(() {
                       _userName = text.trim();
@@ -89,6 +109,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: _fieldTxtStyle,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.person),
+                      suffixIcon: const Text(' '), // to move input text to left
                       hintText: 'Имя: ',
                       hintStyle: TextStyle(
                           fontSize: 16, color: Colors.grey[500]
@@ -117,6 +138,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: TextFormField(
                   focusNode: _emailFocusNode,
+                  controller: _textFieldController_2,
                   onChanged: (text) {
                     setState(() {
                       _email = text.trim();
@@ -133,6 +155,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: _fieldTxtStyle,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.email_outlined),
+                      suffixIcon: const Text(' '), // to move input text to left
                       hintText: 'Почта: ',
                       hintStyle: TextStyle(
                           fontSize: 16, color: Colors.grey[500]
@@ -161,6 +184,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: TextFormField(
                   focusNode: _loginFocusNode,
+                  controller: _textFieldController_3,
                   onChanged: (text) {
                     setState(() {
                       _login = text.trim();
@@ -177,6 +201,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: _fieldTxtStyle,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.login),
+                      suffixIcon: const Text(' '), // to move input text to left
                       hintText: 'Логин: ',
                       hintStyle: TextStyle(
                           fontSize: 16, color: Colors.grey[500]
@@ -204,6 +229,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: TextFormField(
+                  obscureText: _isInputTextObscure,
                   focusNode: _passwordFocusNode,
                   onChanged: (text) {
                     setState(() {
@@ -218,6 +244,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: _fieldTxtStyle,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.password),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                            _isInputTextObscure ? Icons.visibility : Icons.visibility_off
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isInputTextObscure = !_isInputTextObscure;
+                          });
+                        },
+                      ),
                     hintText: 'Пароль: ',
                     hintStyle: TextStyle(
                         fontSize: 16, color: Colors.grey[500]
@@ -325,7 +361,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const StadiumBorder(side: BorderSide(color: Color(0xFF4A93FF))),
                 child: Text('ВХОД В ПРИЛОЖЕНИЕ', style: _btnTxtStyle),
               ),
-              const SizedBox(height: 80)
+              const SizedBox(height: 40)
             ],
           ),
         ),

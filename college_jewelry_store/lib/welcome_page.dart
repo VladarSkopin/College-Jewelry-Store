@@ -18,7 +18,10 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
 
+  late final FocusNode _loginFocusNode;
   late final FocusNode _passwordFocusNode;
+  late TextEditingController _textFieldController_1;
+  bool _isInputTextObscure = true;
 
   final _txtStyle = const TextStyle(color: Color(0xFFBBDAE7), fontSize: 20);
   final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 18);
@@ -33,7 +36,12 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     super.initState();
     //initializeAdmin();
+    _textFieldController_1 = TextEditingController();
+    _loginFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
+    _loginFocusNode.addListener(() {
+      if (_loginFocusNode.hasFocus) _textFieldController_1.clear();
+    });
   }
 
  /*
@@ -83,6 +91,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80.0),
                   child: TextFormField(
+                    focusNode: _loginFocusNode,
+                    controller: _textFieldController_1,
                     onChanged: (text) {
                       setState(() {
                         _login = text.trim();
@@ -99,6 +109,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     style: _fieldTxtStyle,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.login),
+                      suffixIcon: const Text(' '), // to move input text to left
                       hintText: 'Логин: ',
                       hintStyle: TextStyle(
                         fontSize: 18, color: Colors.grey[500]
@@ -124,6 +135,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80.0),
                   child: TextFormField(
+                    obscureText: _isInputTextObscure,
                     focusNode: _passwordFocusNode,
                     onChanged: (text) {
                       setState(() {
@@ -138,6 +150,16 @@ class _WelcomePageState extends State<WelcomePage> {
                     style: _fieldTxtStyle,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.password),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                            _isInputTextObscure ? Icons.visibility : Icons.visibility_off
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isInputTextObscure = !_isInputTextObscure;
+                          });
+                        },
+                      ),
                       hintText: 'Пароль: ',
                       hintStyle: TextStyle(
                           fontSize: 18, color: Colors.grey[500]
