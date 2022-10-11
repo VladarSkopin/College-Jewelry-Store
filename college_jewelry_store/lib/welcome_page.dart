@@ -6,8 +6,8 @@ import 'package:college_jewelry_store/registration_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   Future initializeAdmin() async {
-    User userAdmin = User(userName: 'Администратор', login: 'admin', email: 'grudagor@gmail.com', password: '1qaz@WSXmobuser');
+    User userAdmin = User(userName: 'Администратор', login: 'admin', email: 'grudagor@gmail.com', password: 'mobadmin');
 
     await UsersDatabase.instance.createAdmin(userAdmin);
   }
@@ -167,6 +167,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       // !!!
                       // SHARED PREFERENCES -> SAVE CURRENT LOGIN !!!
                       // !!!
+
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setString('login', _login);
 
                       //Provider.of<CartManager>(context, listen: false).currentUserLogin = _login;
 

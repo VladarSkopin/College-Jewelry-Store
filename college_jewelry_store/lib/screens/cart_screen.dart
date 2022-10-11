@@ -1,6 +1,8 @@
 import 'package:college_jewelry_store/db/cart_database.dart';
+import 'package:college_jewelry_store/db/users_database.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/catalog_model.dart';
 import 'custom_order_screen.dart';
 import 'package:intl/intl.dart' as intl;
@@ -33,9 +35,13 @@ class _CartScreenState extends State<CartScreen> {
       color: Colors.white
   ));
 
+  String login = 'admin';
+  String currentUserName = 'Пользователь';
+
   @override
   void initState() {
     super.initState();
+    loadCurrentUserLogin();
     refreshCart();
   }
 
@@ -45,12 +51,20 @@ class _CartScreenState extends State<CartScreen> {
     super.dispose();
   }
 
+  Future loadCurrentUserLogin() async {
+    await Future.delayed(const Duration(seconds: 1));
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      login = prefs.getString('login') ?? 'admin';
+    });
+  }
+
   Future refreshCart() async {
     setState(() {
       isLoading = true;
     });
 
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
     this.jewelryList = await CartDatabase.instance.readAllJewelry();
 
@@ -251,12 +265,14 @@ class _CartScreenState extends State<CartScreen> {
 
                 await CartDatabase.instance.deleteAll();
 
+                currentUserName = await UsersDatabase.instance.getUserName(login);
+
                 showDialog(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      title: const Text(
-                          'Спасибо за покупку!',
-                          style: TextStyle(
+                      title: Text(
+                          'Спасибо за покупку, $currentUserName!',
+                          style: const TextStyle(
                               color: Color(0xFF256D85), fontSize: 24),
                           textAlign: TextAlign.center),
                       content: const Text('\nЗаберите ваши товары в нашей мастерской по адресу: РФ, г.Санкт-Петербург, пр.Энгельса, д.23 (ИСРПО)',
