@@ -60,9 +60,9 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartManager>(
-      builder: (context, cartManager, child) {
-        return Scaffold(
+    return ChangeNotifierProvider(
+        create: (context) => CartManager(),
+      child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(title: const Text('ДОБРО ПОЖАЛОВАТЬ!')),
           body: Container(
@@ -277,8 +277,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ],
             ),
           ),
-        );
-      }
+        )
     );
   }
 }
