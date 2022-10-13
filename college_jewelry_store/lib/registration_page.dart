@@ -2,6 +2,7 @@
 import 'package:college_jewelry_store/db/users_database.dart';
 import 'package:college_jewelry_store/models/users_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -29,6 +30,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String _email = '';
   String _login = '';
   String _password = '';
+
+  String _registrationDate = '';
 
 
   @override
@@ -280,11 +283,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
               const SizedBox(height: 20),
               MaterialButton(
                 onPressed: () async {
+
+                  DateTime now = DateTime.now();
+
+                  setState(() {
+                    _registrationDate = DateFormat('d-MM-yyyy HH:mm:ss').format(now);
+                  });
+
                   User newUser = User(
                     userName: _userName,
                     email: _email,
                     login: _login,
-                    password: _password
+                    password: _password,
+                    registrationDate: _registrationDate
                   );
 
                   try {

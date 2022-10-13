@@ -33,7 +33,8 @@ class UsersDatabase {
       ${UsersFields.userName} $textType,
       ${UsersFields.login} $textType,
       ${UsersFields.email} $textType,
-      ${UsersFields.password} $textType
+      ${UsersFields.password} $textType,
+      ${UsersFields.registrationDate} $textType
     )
     ''');
   }

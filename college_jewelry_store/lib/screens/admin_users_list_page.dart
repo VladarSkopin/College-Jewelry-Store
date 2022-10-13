@@ -47,8 +47,8 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
           appBar: AppBar(title: const Text('СПИСОК ПОЛЬЗОВАТЕЛЕЙ', style: TextStyle(
             fontSize: 16)),
         ),
-    body: isLoading ? ColoredBox(
-      color: Color(0xFF8FABA6),
+    body: isLoading ? const ColoredBox(
+      color: Color(0xFFe3ffe8),
       child: Center(
         child: CircularProgressIndicator(
           color: Colors.purple,
@@ -81,7 +81,7 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10),
                 child: ExpansionTile(
-                  backgroundColor: Color(0xFFFFF5B0),
+                  backgroundColor: const Color(0xFFFFF5B0),
                   collapsedBackgroundColor: Colors.white,
                   textColor: Colors.black,
                   //collapsedTextColor: Colors.black,
@@ -140,6 +140,8 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
                     Text('email: ${usersList[index].email}', style: _tileTxtStyle),
                     const SizedBox(height: 20),
                     Text('password: ${usersList[index].password}', style: _tileTxtStyle),
+                    const SizedBox(height: 20),
+                    Text('registrationDate: ${usersList[index].registrationDate}', style: _tileTxtStyle),
                     const SizedBox(height: 10),
                   ]
                 ),
@@ -147,23 +149,8 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
             }
         )
       ),
-    ) : Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF19261b),
-              Color(0xFF1a251a),
-              Color(0xFF1b2419),
-              Color(0xFF1b2318),
-              Color(0xFF1c2217),
-              Color(0xFF1c2117),
-              Color(0xFF1d2016),
-              Color(0xFF1d1f16),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          )
-      ),
+    ) : ColoredBox(
+      color: const Color(0xFFe3ffe8),
       child: RefreshIndicator(
         onRefresh: () async {
           refreshUsersList();
@@ -182,7 +169,6 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
               child: Text(
                   'База данных пользователей пуста. Возможно требуется обновить страницу',
                   style: TextStyle(
-                      color: Color(0xFFe3ffe8),
                       fontSize: 20,
                       fontWeight: FontWeight.w600
                   ),
