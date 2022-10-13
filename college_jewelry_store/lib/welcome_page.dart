@@ -18,11 +18,14 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
 
+  late final FocusNode _loginFocusNode;
   late final FocusNode _passwordFocusNode;
+  late TextEditingController _textFieldController_1;
+  bool _isInputTextObscure = true;
 
-  final _txtStyle = const TextStyle(color: Color(0xFF256D85), fontSize: 20);
+  final _txtStyle = const TextStyle(color: Color(0xFFBBDAE7), fontSize: 20);
   final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 18);
-  final _fieldTxtStyle = const TextStyle(color: Colors.blueAccent, fontSize: 20);
+  final _fieldTxtStyle = const TextStyle(color: Colors.blueAccent, fontSize: 18);
 
   String _login = '';
   String _password = '';
@@ -32,15 +35,22 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    initializeAdmin();
+    //initializeAdmin();
+    _textFieldController_1 = TextEditingController();
+    _loginFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
+    _loginFocusNode.addListener(() {
+      if (_loginFocusNode.hasFocus) _textFieldController_1.clear();
+    });
   }
 
+ /*
   Future initializeAdmin() async {
     User userAdmin = User(userName: 'Администратор', login: 'admin', email: 'grudagor@gmail.com', password: 'mobadmin');
 
     await UsersDatabase.instance.createAdmin(userAdmin);
   }
+ */
 
   @override
   void dispose() {
@@ -50,12 +60,28 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartManager>(
-      builder: (context, cartManager, child) {
-        return Scaffold(
+    return ChangeNotifierProvider(
+        create: (context) => CartManager(),
+      child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(title: const Text('ДОБРО ПОЖАЛОВАТЬ!')),
-          body: SingleChildScrollView(
+          body: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF011411),
+                    Color(0xFF001717),
+                    Color(0xFF001a21),
+                    Color(0xFF001b2e),
+                    Color(0xFF001a3b),
+                    Color(0xFF001847),
+                    Color(0xFF00144f),
+                    Color(0xFF02084f),
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                )
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -65,6 +91,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80.0),
                   child: TextFormField(
+                    focusNode: _loginFocusNode,
+                    controller: _textFieldController_1,
                     onChanged: (text) {
                       setState(() {
                         _login = text.trim();
@@ -81,12 +109,13 @@ class _WelcomePageState extends State<WelcomePage> {
                     style: _fieldTxtStyle,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.login),
+                      suffixIcon: const Text(' '), // to move input text to left
                       hintText: 'Логин: ',
                       hintStyle: TextStyle(
                         fontSize: 18, color: Colors.grey[500]
                       ),
-                      //filled: true,
-                      //fillColor: Colors.white,
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.purple[300]!,
@@ -106,10 +135,11 @@ class _WelcomePageState extends State<WelcomePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80.0),
                   child: TextFormField(
+                    obscureText: _isInputTextObscure,
                     focusNode: _passwordFocusNode,
                     onChanged: (text) {
                       setState(() {
-                        _password = text;
+                        _password = text.trim();
                       });
                     },
                     textInputAction: TextInputAction.done,
@@ -120,10 +150,22 @@ class _WelcomePageState extends State<WelcomePage> {
                     style: _fieldTxtStyle,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.password),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                            _isInputTextObscure ? Icons.visibility : Icons.visibility_off
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isInputTextObscure = !_isInputTextObscure;
+                          });
+                        },
+                      ),
                       hintText: 'Пароль: ',
                       hintStyle: TextStyle(
                           fontSize: 18, color: Colors.grey[500]
                       ),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.purple[300]!,
@@ -142,7 +184,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 40),
                 MaterialButton(
                   onPressed: () async {
-                    
+
                     bool loginExists = await UsersDatabase.instance.readUserLogin(_login);
                     bool passwordCorrect = await UsersDatabase.instance.readUserPassword(_password);
 
@@ -220,8 +262,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 const SizedBox(height: 30),
                 MaterialButton(
                   onPressed: () {
-
-
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const RegistrationPage()));
@@ -237,8 +277,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ],
             ),
           ),
-        );
-      }
+        )
     );
   }
 }

@@ -176,6 +176,16 @@ class UsersDatabase {
     );
   }
 
+  Future<int> deleteUserByLogin(String login) async {
+    final db = await instance.database;
+
+    return await db.delete(
+        tableUsers,
+      where: '${UsersFields.login} = ?',
+      whereArgs: [login]
+    );
+  }
+
   Future deleteAllUsers() async {
     final db = await instance.database;
 

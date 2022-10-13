@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/catalog_model.dart';
 import 'custom_order_screen.dart';
 import 'package:intl/intl.dart' as intl;
+import 'item_page_cart.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -65,7 +66,6 @@ class _CartScreenState extends State<CartScreen> {
     });
 
     await Future.delayed(const Duration(seconds: 1));
-
     this.jewelryList = await CartDatabase.instance.readAllJewelry();
 
     setState(() {
@@ -107,7 +107,7 @@ class _CartScreenState extends State<CartScreen> {
           refreshCart();
         },
         color: Colors.white,
-        backgroundColor: Color(0xFF9C2C77),
+        backgroundColor: const Color(0xFF9C2C77),
         strokeWidth: 4,
         edgeOffset: 10,
         displacement: 80.0,
@@ -208,11 +208,35 @@ class _CartScreenState extends State<CartScreen> {
                         child: Column(
                           children: [
                             Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image(
-                                  image: AssetImage(jewelryList[index].imgUrl),
-                                ),
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      image: AssetImage(jewelryList[index].imgUrl),
+                                    ),
+                                  ),
+                                  Positioned.fill(
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType.scale,
+                                                  alignment: Alignment.bottomCenter,
+                                                  duration: const Duration(milliseconds: 1200),
+                                                  child: ItemPageCart(item: jewelryList[index])
+                                              )
+                                          );
+                                        },
+                                        splashColor: Colors.lightBlueAccent.withOpacity(0.3),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
+                                ]
                               ),
                             ),
                             SizedBox(

@@ -1,5 +1,5 @@
 
-import 'package:college_jewelry_store/screens/admin_db_page.dart';
+import 'package:college_jewelry_store/screens/admin_db_screen.dart';
 import 'package:college_jewelry_store/screens/collection_screen.dart';
 import 'package:college_jewelry_store/screens/custom_order_screen.dart';
 import 'package:flutter/material.dart';
