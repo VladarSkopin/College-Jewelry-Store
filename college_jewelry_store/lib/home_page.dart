@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
               resizeToAvoidBottomInset: false,
               appBar: AppBar(
                   title: const Text('ЮВЕЛИРНАЯ МАСТЕРСКАЯ'),
-                  centerTitle: true,
                 actions: [
                   PopupMenuButton<int>(
                     itemBuilder: (context) => [
@@ -91,9 +90,9 @@ class _HomePageState extends State<HomePage> {
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
                               title: const Text(
-                                  'Автор: Скопинцев Александр Александрович. '
-                                      '\n\nПриложениe для сети ювелирных мастерских ИСРПО. '
-                                      '\n\nКонтакты: grudagor@gmail.com',
+                                      'Приложениe для сети ювелирных мастерских ИСРПО. '
+                                          '\n\nАвтор: \nСкопинцев Александр Александрович. '
+                                      '\n\nКонтакты: \ngrudagor@gmail.com',
                                   style: TextStyle(
                                       color: Color(0xFF256D85)),
                                   textAlign: TextAlign.left),

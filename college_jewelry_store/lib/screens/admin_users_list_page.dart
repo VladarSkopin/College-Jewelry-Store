@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:college_jewelry_store/db/users_database.dart';
-
 import '../models/users_model.dart';
 
 class AdminUsersListPage extends StatefulWidget {
@@ -17,6 +16,7 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
   bool isLoading = false;
 
   final _tileTxtStyle = const TextStyle(
+    color: Colors.black,
     fontSize: 18,
   );
 
@@ -46,6 +46,94 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
         child: Scaffold(
           appBar: AppBar(title: const Text('СПИСОК ПОЛЬЗОВАТЕЛЕЙ', style: TextStyle(
             fontSize: 16)),
+            actions: [
+              PopupMenuButton<int>(
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 1,
+                    child: Row(
+                      children: const [
+                        Icon(Icons.sort),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Сортировать по дате", style: TextStyle(color: Colors.white),)
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: Row(
+                      children: const [
+                        Icon(Icons.sort),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Сортировать по логину", style: TextStyle(color: Colors.white))
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 3,
+                    child: Row(
+                      children: const [
+                        Icon(Icons.sort),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Сортировать по имени", style: TextStyle(color: Colors.white))
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 4,
+                    child: Row(
+                      children: const [
+                        Icon(Icons.sort),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Сортировать по почте", style: TextStyle(color: Colors.white))
+                      ],
+                    ),
+                  ),
+                ],
+                offset: const Offset(0, 50),
+                color: const Color(0xFF4A93FF),
+                elevation: 2,
+                onSelected: (value) {
+                  if (value == 1) {
+
+                    // SORT BY DATE
+                    setState(() {
+                      usersList.sort((a, b) => b.registrationDate.compareTo(a.registrationDate));
+                    });
+
+                  } else if (value == 2) {
+
+                    // SORT BY LOGIN
+                    setState(() {
+                      usersList.sort((a, b) => a.login.compareTo(b.login));
+                    });
+
+                  } else if (value == 3) {
+
+                    // SORT BY NAME
+                    setState(() {
+                      usersList.sort((a, b) => a.userName.compareTo(b.userName));
+                    });
+
+                  } else if (value == 4) {
+
+                    // SORT BY EMAIL
+                    setState(() {
+                      usersList.sort((a, b) => a.email.compareTo(b.email));
+                    });
+
+                  }
+                },
+              ),
+            ],
         ),
     body: isLoading ? const ColoredBox(
       color: Color(0xFFe3ffe8),
@@ -131,17 +219,45 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
                         0xFFDC2400)),
                   ),
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: Text(usersList[index].login, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                  title: Text(usersList[index].login, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
                     childrenPadding: const EdgeInsets.symmetric(vertical: 10),
                     expandedCrossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('userName: ${usersList[index].userName}', style: _tileTxtStyle),
+                    RichText(text: TextSpan(children: [
+                      const TextSpan(text: 'userName: ', style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600
+                      )),
+                      TextSpan(text: usersList[index].userName, style: _tileTxtStyle)
+                    ])),
                     const SizedBox(height: 20),
-                    Text('email: ${usersList[index].email}', style: _tileTxtStyle),
+                    RichText(text: TextSpan(children: [
+                      const TextSpan(text: 'email: ', style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
+                      )),
+                      TextSpan(text: usersList[index].email, style: _tileTxtStyle)
+                    ])),
                     const SizedBox(height: 20),
-                    Text('password: ${usersList[index].password}', style: _tileTxtStyle),
+                    RichText(text: TextSpan(children: [
+                      const TextSpan(text: 'password: ', style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
+                      )),
+                      TextSpan(text: usersList[index].password, style: _tileTxtStyle)
+                    ])),
                     const SizedBox(height: 20),
-                    Text('registrationDate: ${usersList[index].registrationDate}', style: _tileTxtStyle),
+                    RichText(text: TextSpan(children: [
+                      const TextSpan(text: 'registrationDate: ', style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
+                      )),
+                      TextSpan(text: usersList[index].registrationDate, style: _tileTxtStyle)
+                    ])),
                     const SizedBox(height: 10),
                   ]
                 ),
@@ -167,7 +283,7 @@ class _AdminUsersListPageState extends State<AdminUsersListPage> {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
               child: Text(
-                  'База данных пользователей пуста. Возможно требуется обновить страницу',
+                  'База данных пользователей пуста. \n\nВозможно требуется обновить страницу',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600

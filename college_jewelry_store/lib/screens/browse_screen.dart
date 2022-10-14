@@ -287,7 +287,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Text('Сережки', style: _txtStyle),
+                  child: Text('Серёжки', style: _txtStyle),
                 ),
                 Container(
                   decoration: _catalogDecoration,

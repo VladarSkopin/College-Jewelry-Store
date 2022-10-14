@@ -130,6 +130,23 @@ class UsersDatabase {
     }
   }
 
+  Future<String> readUserPasswordByLogin(String login) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+        tableUsers,
+        columns: UsersFields.values,
+        where: '${UsersFields.login} = ?',
+        whereArgs: [login]
+    );
+
+    if (maps.isNotEmpty) {
+      return maps.first['password'] as String;
+    } else {
+      return 'NO_PASSWORD_FOR_THIS_LOGIN'; // MESSAGE !!! -> compare when authorize!
+    }
+  }
+
   Future<String> getUserName(String login) async {
     final db = await instance.database;
 
