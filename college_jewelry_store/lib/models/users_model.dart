@@ -3,7 +3,7 @@ final String tableUsers = 'tableUsers';
 
 class UsersFields {
   static final List<String> values = [
-    id, userName, login, email, password
+    id, userName, login, email, password, registrationDate
   ];
 
   static final String id = '_id';
@@ -11,6 +11,7 @@ class UsersFields {
   static final String login = 'login';
   static final String email = 'email';
   static final String password = 'password';
+  static final String registrationDate = 'registrationDate';
 }
 
 class User {
@@ -19,13 +20,15 @@ class User {
   String login;
   String email;
   String password;
+  String registrationDate;
 
   User({
     this.id,
     required this.userName,
     required this.login,
     required this.email,
-    required this.password
+    required this.password,
+    required this.registrationDate
   });
 
   Map<String, Object?> toJson() => {
@@ -33,7 +36,8 @@ class User {
     UsersFields.userName : userName,
     UsersFields.login : login,
     UsersFields.email : email,
-    UsersFields.password : password
+    UsersFields.password : password,
+    UsersFields.registrationDate : registrationDate
   };
 
   static User fromJson(Map<String, Object?> json) => User(
@@ -41,7 +45,8 @@ class User {
     userName: json[UsersFields.userName] as String,
     login: json[UsersFields.login] as String,
     email: json[UsersFields.email] as String,
-    password: json[UsersFields.password] as String
+    password: json[UsersFields.password] as String,
+    registrationDate: json[UsersFields.registrationDate] as String
   );
 
   User copy({
@@ -49,12 +54,14 @@ class User {
     String? userName,
     String? login,
     String? email,
-    String? password
+    String? password,
+    String? registrationDate
   }) => User(
     id: id ?? this.id,
     userName: userName ?? this.userName,
     login: login ?? this.login,
     email: email ?? this.email,
-    password: password ?? this.password
+    password: password ?? this.password,
+    registrationDate: registrationDate ?? this.registrationDate
   );
 }

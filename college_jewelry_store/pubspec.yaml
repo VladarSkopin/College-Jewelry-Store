@@ -19,6 +19,7 @@ dependencies:
   #database storage
   sqflite: ^2.1.0+1
   shared_preferences: ^2.0.15
+  email_validator: '^2.1.16'
 
 dev_dependencies:
   flutter_test:

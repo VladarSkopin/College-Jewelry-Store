@@ -1,5 +1,7 @@
 import 'package:college_jewelry_store/db/cart_database.dart';
+import 'package:college_jewelry_store/db/operation_history_database.dart';
 import 'package:college_jewelry_store/db/users_database.dart';
+import 'package:college_jewelry_store/models/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -286,6 +288,13 @@ class _CartScreenState extends State<CartScreen> {
           const SizedBox(height: 30),
           MaterialButton(
               onPressed: () async {
+
+                // ADD DATA TO OPERATIONS HISTORY
+                int dateTimeMillis = DateTime.now().millisecondsSinceEpoch;
+                for (Jewelry jewelry in jewelryList) {
+                  TransactionInfo ti = TransactionInfo(login: login, itemLabel: jewelry.label, itemPrice: jewelry.price, transactionDateMillis: dateTimeMillis);
+                  await OperationHistoryDatabase.instance.writeTransactionInfo(ti);
+                }
 
                 await CartDatabase.instance.deleteAll();
 
