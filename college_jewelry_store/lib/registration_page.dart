@@ -20,6 +20,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   late TextEditingController _textFieldController_2;
   late TextEditingController _textFieldController_3;
   bool _isInputTextObscure = true;
+  int count = 0;
 
   final _txtStyle = const TextStyle(color: Color(0xFFBBDAE7), fontSize: 20);
   final _btnTxtStyle = const TextStyle(color: Colors.white, fontSize: 16);
@@ -389,8 +390,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             MainAxisAlignment.center,
                                         actions: [
                                           TextButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
+                                            onPressed: () {
+                                              //Navigator.pop(context);
+                                              Navigator.popUntil(context, (route) => count++ == 2);
+                                            },
                                             child: const Text('Ок',
                                                 style: TextStyle(
                                                     color: Color(0xFF47B5FF),
