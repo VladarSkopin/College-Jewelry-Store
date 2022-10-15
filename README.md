@@ -36,3 +36,6 @@ by Skopintsev Alexander
 ![Jewelry Store App 10](/jewelry_screenshot_10.PNG?raw=true "Jewelry Store App 10")
 
 
+![Jewelry Store App 11](/jewelry_screenshot_11.PNG?raw=true "Jewelry Store App 11")
+
+
