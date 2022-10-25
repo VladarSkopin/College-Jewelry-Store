@@ -1,4 +1,3 @@
-This app is currently under development !
 
 # Jewelry Store
 Theory of Software Development Project
