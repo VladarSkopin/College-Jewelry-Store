@@ -6,7 +6,6 @@ import 'package:college_jewelry_store/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'models/cart_manager.dart';
 
 

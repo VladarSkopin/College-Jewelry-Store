@@ -5,7 +5,6 @@ import 'package:college_jewelry_store/screens/admin_operations_history_page.dart
 import 'package:college_jewelry_store/screens/admin_users_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
 import '../db/cart_database.dart';
 
 class AdminDbPage extends StatefulWidget {

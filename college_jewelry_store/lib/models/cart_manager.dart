@@ -37,5 +37,5 @@ class CartManager extends ChangeNotifier {
     notifyListeners();
   }
 
-
 }
+
