@@ -308,7 +308,7 @@ class _CartScreenState extends State<CartScreen> {
                           style: const TextStyle(
                               color: Color(0xFF256D85), fontSize: 24),
                           textAlign: TextAlign.center),
-                      content: const Text('\nЗаберите ваши товары в нашей мастерской по адресу: РФ, г.Санкт-Петербург, пр.Энгельса, д.23 (ИСРПО)',
+                      content: const Text('\nЗаберите ваши товары в нашей мастерской по адресу: РФ, г.Санкт-Петербург, пр.Энгельса, д.23 (ИСПО)',
                         style: TextStyle(
                             color: Color(0xFF256D85), fontSize: 20)),
                       shape: RoundedRectangleBorder(
